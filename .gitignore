@@ -1,0 +1,15 @@
+# Transient hook state (counters, handoffs) — never commit
+.hook-state/
+
+# Audit reports and screenshots
+reports/
+
+# OS / editor cruft
+.DS_Store
+*.swp
+*~
+.vscode/
+.idea/
+
+# Node (for the npx CLI dev only)
+node_modules/

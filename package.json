@@ -1,0 +1,51 @@
+{
+  "name": "@tansuasici/claude-marketing-kit",
+  "version": "0.1.0",
+  "description": "Drop-in kit that makes Claude Code market a product like a disciplined marketer: no unsourced claims, no AI-sounding copy, nothing published without approval",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tansuasici/claude-marketing-kit.git"
+  },
+  "homepage": "https://claudemarketingkit.tansuasici.com",
+  "keywords": [
+    "claude-code",
+    "claude",
+    "marketing",
+    "copywriting",
+    "positioning",
+    "social-media",
+    "seo",
+    "launch",
+    "anti-slop",
+    "agent-config"
+  ],
+  "bin": {
+    "claude-marketing-kit": "bin/claude-marketing-kit.js",
+    "cmk": "bin/claude-marketing-kit.js"
+  },
+  "files": [
+    "bin/",
+    "agents/",
+    "hooks/",
+    "agent_docs/",
+    ".claude/",
+    ".claude-plugin/",
+    "CLAUDE.md",
+    "CLAUDE.project.md",
+    "MARKETING_MAP.md",
+    "AGENTS.md",
+    "README.md",
+    "CHANGELOG.md",
+    "install.sh",
+    "uninstall.sh",
+    "VERSION",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
