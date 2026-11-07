@@ -70,6 +70,8 @@ has set up (for example Buffer MCP), and only when:
 Approval for one post is not approval for the next. Saving to a scheduler's
 drafts is fine without approval; queueing, scheduling or posting now is not.
 
+> _Partially enforced via_ `.claude/hooks/publish-gate.sh`. _It denies publish calls to a channel with_ `publish: off` _and turns the rest into a permission prompt showing channel, time and text. It can't read the conversation, and in_ `bypassPermissions` _mode the prompt may not appear: ask in chat first anyway._
+
 ---
 
 ## Approval Required

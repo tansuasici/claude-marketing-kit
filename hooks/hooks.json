@@ -43,6 +43,15 @@
             "command": "\"${CLAUDE_PLUGIN_ROOT}\"/.claude/hooks/claim-scan.sh"
           }
         ]
+      },
+      {
+        "matcher": "mcp__.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}\"/.claude/hooks/publish-gate.sh"
+          }
+        ]
       }
     ],
     "PostToolUse": [
