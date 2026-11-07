@@ -21,6 +21,9 @@ source "$HOOK_LIB/state-counter.sh"
 
 ROOT="${CLAUDE_PROJECT_DIR:-$PWD}"
 
+# Block messages go to stderr: on exit 2 Claude sees stderr only, stdout is dropped.
+exec 1>&2
+
 bump_branch_block() {
   bump_counter "$ROOT/.hook-state/hook-firings.json" "branch-protect"
 }
