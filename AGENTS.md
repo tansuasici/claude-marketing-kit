@@ -3,6 +3,7 @@
   CLAUDE.md is the single source of truth for Claude Marketing Kit.
   Regenerate by copying CLAUDE.md below this header (a convert script is planned).
 -->
+
 # CLAUDE.md
 
 You are working with a developer who is marketing their own product. Your job
