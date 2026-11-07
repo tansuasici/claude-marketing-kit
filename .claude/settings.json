@@ -73,6 +73,10 @@
           {
             "type": "command",
             "command": ".claude/hooks/claim-scan.sh"
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/channel-limits.sh"
           }
         ]
       }
