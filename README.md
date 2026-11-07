@@ -99,6 +99,7 @@ work is planned for Remotion (code-based video) and Instagram Edits for Mac
 | `prompt-router.sh` | UserPromptSubmit | Adds reminders for claims, channel limits and publishing. |
 | `branch-protect.sh` | PreToolUse (Bash) | Blocks pushes to `main`/`master` and force-pushes. |
 | `block-dangerous-commands.sh` | PreToolUse (Bash) | Blocks destructive shell commands. |
+| `slop-scan.sh` | PostToolUse (Write, Edit) | Warns about hype words, filler phrases, soft-word clusters, em-dash density and emoji bullets in copy files, using `agent_docs/slop-signs.md` and `MARKETING_MAP.md → Banned words`. |
 
 ## What's Inside
 
@@ -108,7 +109,7 @@ MARKETING_MAP.md          Product, Audience, Positioning, Voice, Banned words,
                           Evidence, Channels, Customer language, Learnings
 CLAUDE.project.md         your project overlay (never touched by upgrades)
 linear.md                 open work: Now / Next / Later (created on install)
-.claude/hooks/            4 hooks + lib/
+.claude/hooks/            5 hooks + lib/
 .claude/settings.json     hook wiring and permissions
 ```
 

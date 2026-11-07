@@ -52,6 +52,17 @@
           }
         ]
       }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/slop-scan.sh"
+          }
+        ]
+      }
     ]
   }
 }
