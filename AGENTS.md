@@ -82,6 +82,8 @@ Stop and ask the user before you:
 - Turn a channel's `publish` to `on`.
 - Spend money: ads, boosts, paid tools, paid music or footage.
 
+When Product, Audience, Positioning or Voice changes, add a row to `MARKETING_MAP.md → Changes` with the next version number.
+
 ---
 
 ## Verification (before calling a draft done)

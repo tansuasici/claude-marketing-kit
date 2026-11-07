@@ -109,7 +109,7 @@ work is planned for Remotion (code-based video) and Instagram Edits for Mac
 ```
 CLAUDE.md                 ruleset (tiered boot, the loop, cardinal rule, approvals, verification)
 MARKETING_MAP.md          Product, Audience, Positioning, Voice, Banned words,
-                          Evidence, Channels, Customer language, Learnings
+                          Evidence, Channels, Customer language, Learnings, Changes
 CLAUDE.project.md         your project overlay (never touched by upgrades)
 linear.md                 open work: Now / Next / Later (created on install)
 .claude/hooks/            8 hooks + lib/

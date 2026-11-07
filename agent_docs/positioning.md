@@ -70,5 +70,5 @@ Never state a competitor's price, limit or flaw without a link, and never in pub
 A new feature, a pivot, or a pattern in user feedback can move the position. When it does:
 
 1. Propose the new line next to the old one, with the evidence for the change.
-2. After the user approves, update the map and add a line to `Learnings` with what triggered it.
+2. After the user approves, update the map and add a row to `Changes` with the next version number and what triggered it.
 3. Flag drafts and pages that still carry the old position.
