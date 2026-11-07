@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" alt="Claude Marketing Kit" width="160">
+</p>
+
 <h1 align="center">Claude Marketing Kit</h1>
 
 <p align="center">Drop-in templates that make Claude Code market a developer product like the person who built it: claims backed by evidence, drafts written for one channel at a time, nothing published without your approval.</p>
@@ -7,8 +11,8 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/status-pre--release-555" alt="pre-release">
-  <img src="https://img.shields.io/badge/license-MIT-555" alt="MIT">
+  <img src="https://img.shields.io/badge/status-pre--release-0f766e" alt="pre-release">
+  <img src="https://img.shields.io/badge/license-MIT-0f766e" alt="MIT">
 </p>
 
 > **Status:** early skeleton. The ruleset, the map template and the hooks are

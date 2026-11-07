@@ -25,6 +25,7 @@
     "cmk": "bin/claude-marketing-kit.js"
   },
   "files": [
+    "assets/",
     "bin/",
     "agents/",
     "hooks/",
