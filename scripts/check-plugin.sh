@@ -25,7 +25,7 @@ elif ! diff -rq .claude/agents agents >/dev/null 2>&1; then
   echo "FAIL agents/ drifted from .claude/agents/ — run: cp .claude/agents/*.md agents/"
   fail=1
 else
-  echo "ok   agents/ matches .claude/agents/ ($(ls agents/*.md | wc -l | tr -d ' ') agents)"
+  echo "ok   agents/ matches .claude/agents/ ($(find agents -maxdepth 1 -name '*.md' | wc -l | tr -d ' ') agents)"
 fi
 
 python3 - <<'EOF' || fail=1

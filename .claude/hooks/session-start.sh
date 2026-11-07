@@ -10,10 +10,11 @@
 
 set -euo pipefail
 
-INPUT=$(cat)
+cat >/dev/null  # stdin carries nothing this hook needs
 HOOK_LIB="$(cd "$(dirname "$0")/lib" 2>/dev/null && pwd)" || exit 0
-source "$HOOK_LIB/json-parse.sh"
+# shellcheck source=lib/state-counter.sh
 source "$HOOK_LIB/state-counter.sh"
+# shellcheck source=lib/emit.sh
 source "$HOOK_LIB/emit.sh"
 
 ROOT="${CLAUDE_PROJECT_DIR:-$PWD}"

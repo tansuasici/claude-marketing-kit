@@ -12,6 +12,15 @@ jobs:
       - uses: actions/checkout@v4
       - run: ./scripts/check-plugin.sh
 
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: JSON
+        run: git ls-files -z '*.json' | xargs -0 -n1 jq empty
+      - name: shellcheck
+        run: git ls-files -z '*.sh' | xargs -0 shellcheck
+
   hooks:
     runs-on: ubuntu-latest
     steps:

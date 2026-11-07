@@ -50,6 +50,7 @@ blocks 'rm -r -f /usr'                  "Recursive delete on a system directory"
 blocks 'rm --recursive --force /Library' "Recursive delete on a system directory"
 blocks 'rm -rf ~'                       "Recursive delete on home directory"
 blocks 'rm -rf ~/Documents'             "Recursive delete on home directory"
+# shellcheck disable=SC2016  # literal $HOME is the point
 blocks 'rm -rf $HOME'                   "Recursive delete on home directory"
 blocks 'rm -rf /Users/someone'          "Recursive delete on home directory"
 blocks 'rm -rf .'                       "Recursive delete on current directory"

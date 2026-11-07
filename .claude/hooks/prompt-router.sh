@@ -12,7 +12,9 @@ set -euo pipefail
 
 INPUT=$(cat)
 HOOK_LIB="$(cd "$(dirname "$0")/lib" 2>/dev/null && pwd)" || exit 0
+# shellcheck source=lib/json-parse.sh
 source "$HOOK_LIB/json-parse.sh"
+# shellcheck source=lib/emit.sh
 source "$HOOK_LIB/emit.sh"
 
 PROMPT=$(parse_json_field "prompt")
