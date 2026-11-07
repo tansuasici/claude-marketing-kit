@@ -99,6 +99,20 @@ All rows below: last checked 2026-11-07.
 
 ---
 
+## Draft files
+
+A draft says which channel it is for, so `.claude/hooks/channel-limits.sh` can count it after each write:
+
+- Frontmatter first: `channel: x` (or `linkedin`, `instagram`, `facebook`, `youtube`, `tiktok`; `twitter`, `ig`, `fb`, `yt` also work).
+- Else the path: a folder or file-name part that names the channel, such as `drafts/x/launch.md` or `launch.linkedin.md`.
+- One post per file, or several separated by a `---` line (an X thread, a carousel's slides). Each part is counted on its own.
+- YouTube: the first line is the title (a leading `#` is dropped); the rest is the description.
+- HTML comments (`<!-- note -->`) are notes to self and are not counted. Markdown is counted as written: if it gets pasted raw, it ships raw.
+
+The hook reports the counted lengths even when they fit; use them for Verification step 3. Facebook gets a count but no limit, since the figure above is unverified.
+
+---
+
 ## Formats
 
 What each format is for, so a draft picks one on purpose:
