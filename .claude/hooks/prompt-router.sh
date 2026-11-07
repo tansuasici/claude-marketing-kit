@@ -41,7 +41,7 @@ fi
 
 # Publishing anything outside the repo
 if has 'publish|post (it|this|now)|schedule|send (it|the|this)|go live|ship (it|the post)'; then
-  append "[Publish gate] Nothing leaves the repo without the user's explicit yes in this session. Show the final text, the channel and the time, then wait."
+  append "[Publish gate] Nothing leaves the repo without the user's explicit yes in this session. Show the final text, the channel and the time, then wait. publish-gate.sh repeats them in the permission prompt."
 fi
 
 [ -z "$REMINDERS" ] && exit 0

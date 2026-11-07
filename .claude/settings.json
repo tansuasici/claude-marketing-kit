@@ -60,6 +60,15 @@
             "command": ".claude/hooks/claim-scan.sh"
           }
         ]
+      },
+      {
+        "matcher": "mcp__.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/publish-gate.sh"
+          }
+        ]
       }
     ],
     "PostToolUse": [
