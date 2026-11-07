@@ -9,6 +9,8 @@
 #   - agents/ drifts from .claude/agents/ (the copy the npx installer ships)
 #   - hooks/hooks.json drifts from the hooks in .claude/settings.json, or a
 #     hook command is not rooted at "${CLAUDE_PLUGIN_ROOT}"
+#   - a .claude/skills/<name>/SKILL.md lacks `name: <name>` or a one-line
+#     `description:` (what `cmk skills` and Claude Code read)
 #
 # Usage:
 #   ./scripts/check-plugin.sh
@@ -68,5 +70,20 @@ if ok:
     print(f"ok   plugin.json has no agents/hooks key; hooks.json matches settings.json ({len(plugin_cmds)} hooks)")
 sys.exit(0 if ok else 1)
 EOF
+
+for skill in .claude/skills/*/SKILL.md; do
+  [ -f "$skill" ] || continue
+  dir=$(basename "$(dirname "$skill")")
+  front=$(awk 'NR == 1 && $0 != "---" { exit } NR > 1 && $0 == "---" { exit } NR > 1' "$skill")
+  if ! printf '%s\n' "$front" | grep -qx "name: $dir"; then
+    echo "FAIL $skill: frontmatter needs \`name: $dir\`"
+    fail=1
+  elif ! printf '%s\n' "$front" | grep -qE '^description: *[^ >|]'; then
+    echo "FAIL $skill: frontmatter needs a one-line \`description:\`"
+    fail=1
+  else
+    echo "ok   skill $dir"
+  fi
+done
 
 exit "$fail"

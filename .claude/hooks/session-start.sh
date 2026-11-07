@@ -45,7 +45,7 @@ if [ -f "$MAP" ]; then
   PRODUCT=$(section_line "$MAP" "Product")
   POSITIONING=$(section_line "$MAP" "Positioning")
   if [ -z "$PRODUCT" ] || printf '%s' "$PRODUCT" | grep -q '<'; then
-    append_line "MARKETING_MAP.md is still the template. Fill it in (product, audience, positioning, evidence) before writing any copy."
+    append_line "MARKETING_MAP.md is still the template. Fill it in (product, audience, positioning, evidence) before writing any copy: run /brief."
   else
     append_line "MARKETING_MAP.md is filled in. Read it before writing any copy."
     append_line "Product → $PRODUCT"
