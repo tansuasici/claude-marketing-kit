@@ -34,7 +34,7 @@ A `CLAUDE.md` ruleset, a positioning file and hooks that enforce one loop:
 **Research → Position → Create → Gate → Measure**, every time.
 
 The cardinal rule: **every claim traces back to a row in
-`MARKETING_MAP.md → Evidence`.** A claim without one is marked `NEEDS PROOF`.
+`MARKETING_MAP.md → Evidence`.** A claim without one is marked `[NEEDS PROOF]`.
 
 ## Quick Start
 

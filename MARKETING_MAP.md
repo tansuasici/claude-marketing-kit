@@ -28,17 +28,17 @@
 - **Person and tense:** <"I" / "we", present tense>
 
 ## Banned words
-<!-- Hype that would describe any product. Extend as corrections come in. -->
+<!-- Project-specific additions to the kit baseline in agent_docs/slop-signs.md. Extend as corrections come in. -->
 - revolutionary, game-changing, seamless, effortless, cutting-edge, next-generation, unlock, supercharge, leverage, 10x
 
 ## Evidence
-<!-- Every product claim used in copy needs a row here. No row → mark the claim NEEDS PROOF. -->
+<!-- Every product claim used in copy needs a row here. No row → mark the claim [NEEDS PROOF]. See agent_docs/claims-and-evidence.md. -->
 | Claim | Source (changelog / code ref / metric / customer quote) | Checked |
 |---|---|---|
 | <e.g. Installs in one command> | <README Quick Start, `bin/cli.js`> | <date> |
 
 ## Channels
-<!-- Limits change; verify them before a campaign. publish: off = drafts only. Turn on per channel; every publish still needs explicit approval. -->
+<!-- Platform limits live in agent_docs/channels.md (with sources and check dates); this table is your account, cadence and publish flag. publish: off = drafts only. Turn on per channel; every publish still needs explicit approval. -->
 | Channel | Account | Format / limit | Cadence | publish |
 |---|---|---|---|---|
 | X | <@handle> | 280 chars per post; threads ok | <...> | off |
@@ -46,7 +46,7 @@
 | Instagram | <@handle> | caption 2,200 chars; Reels 9:16 | <...> | off |
 | Facebook | <page> | <...> | <...> | off |
 | YouTube | <channel> | title 100 chars; description 5,000; Shorts 9:16 | <...> | off |
-| TikTok | <@handle> | <check current caption limit>; 9:16 | <...> | off |
+| TikTok | <@handle> | 2,200 via schedulers (see agent_docs/channels.md); 9:16 | <...> | off |
 
 ## Customer language
 <!-- Verbatim phrases from issues, reviews, support threads, calls. Quote, don't paraphrase. -->

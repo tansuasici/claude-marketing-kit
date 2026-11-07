@@ -35,17 +35,17 @@ Product, Audience and Positioning with the user first.
 ## The Loop
 Every piece of work runs **Research → Position → Create → Gate → Measure**.
 
-1. **Research.** Read the product itself (README, changelog, docs, code) and what users actually say. Customer language beats your phrasing.
-2. **Position.** Decide who this is for and what it beats, in `MARKETING_MAP.md`, before any draft.
-3. **Create.** Write for one channel at a time, inside that channel's limits.
-4. **Gate.** Check claims against Evidence, words against the banned list, and length against the channel row. Nothing leaves without approval.
+1. **Research.** Read the product itself (README, changelog, docs, code) and what users actually say. Customer language beats your phrasing. See `agent_docs/positioning.md → Sources`.
+2. **Position.** Decide who this is for and what it beats, in `MARKETING_MAP.md`, before any draft. See `agent_docs/positioning.md`.
+3. **Create.** Write for one channel at a time, inside that channel's limits. See `agent_docs/copywriting.md` and `agent_docs/channels.md`.
+4. **Gate.** Check claims against Evidence, words against the banned list, and length against the channel row. Nothing leaves without approval. See `agent_docs/claims-and-evidence.md` and `agent_docs/slop-signs.md`.
 5. **Measure.** Record what happened under `MARKETING_MAP.md → Learnings`, with the number.
 
 ---
 
 ## Cardinal Rule: True and Specific
-- **Never invent product facts.** Do not make up metrics, user counts, testimonials, customer logos, pricing, benchmarks, integrations or awards. A claim with no row in `MARKETING_MAP.md → Evidence` is marked `NEEDS PROOF` in the draft and never ships unmarked.
-- **No hype words.** Anything in `MARKETING_MAP.md → Banned words` is out. So is any sentence a competitor could post unchanged.
+- **Never invent product facts.** Do not make up metrics, user counts, testimonials, customer logos, pricing, benchmarks, integrations or awards. A claim with no row in `MARKETING_MAP.md → Evidence` is marked `[NEEDS PROOF]` in the draft and never ships unmarked. See `agent_docs/claims-and-evidence.md`.
+- **No hype words.** Anything in `agent_docs/slop-signs.md` or `MARKETING_MAP.md → Banned words` is out. So is any sentence a competitor could post unchanged.
 - **Show, don't assert.** A command, a screenshot, a diff or a before/after beats an adjective.
 - **Quote people, don't paraphrase them.** Customer language goes in verbatim, with its source. Never write a quote nobody said.
 - **No fake assets.** Do not hotlink or make up logos, photos or brand marks. Leave a labelled slot.
@@ -53,7 +53,7 @@ Every piece of work runs **Research → Position → Create → Gate → Measure
 ---
 
 ## Channel Discipline
-- Write to the channel row in `MARKETING_MAP.md → Channels`: its length limit, its format and its aspect ratio. A LinkedIn post cut down to 280 characters is not an X post.
+- Write to the channel's limits in `agent_docs/channels.md` and its row in `MARKETING_MAP.md → Channels`: length, format and aspect ratio. A LinkedIn post cut down to 280 characters is not an X post.
 - The opening line carries the post. Put the specific thing first; save context for later.
 - One idea per post. A second idea is a second post.
 - Repurposing means rewriting for the new channel, not truncating.
@@ -83,7 +83,7 @@ Stop and ask the user before you:
 ---
 
 ## Verification (before calling a draft done)
-1. **Evidence.** Every claim has an Evidence row or a `NEEDS PROOF` mark.
+1. **Evidence.** Every claim has an Evidence row or a `[NEEDS PROOF]` mark.
 2. **Banned words.** None present.
 3. **Limits.** Length, hashtags and media fit the channel row. Say whether you **counted** or are **estimating**.
 4. **Competitor test.** Could a competitor post this unchanged? If yes, it isn't done.
@@ -108,6 +108,15 @@ When the user corrects a draft ("too salesy", "we'd never say that", "wrong audi
 
 ## Task Tracking
 Open work lives in **`linear.md`** (Now / Next / Later). It is the single task file; don't create `tasks/todo.md`.
+
+---
+
+## Reference
+- Claims, proof and `[NEEDS PROOF]` → `agent_docs/claims-and-evidence.md`
+- Hype words, filler and the competitor test → `agent_docs/slop-signs.md`
+- Platform limits and formats → `agent_docs/channels.md`
+- Openings, body, CTA and revision order → `agent_docs/copywriting.md`
+- Filling Product, Audience and Positioning → `agent_docs/positioning.md`
 
 ---
 
