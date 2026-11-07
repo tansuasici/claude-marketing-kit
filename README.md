@@ -100,6 +100,7 @@ work is planned for Remotion (code-based video) and Instagram Edits for Mac
 | `branch-protect.sh` | PreToolUse (Bash) | Blocks pushes to `main`/`master` and force-pushes. |
 | `block-dangerous-commands.sh` | PreToolUse (Bash) | Blocks destructive shell commands. |
 | `slop-scan.sh` | PostToolUse (Write, Edit) | Warns about hype words, filler phrases, soft-word clusters, em-dash density and emoji bullets in copy files, using `agent_docs/slop-signs.md` and `MARKETING_MAP.md → Banned words`. |
+| `claim-scan.sh` | PreToolUse + PostToolUse (Write, Edit) | Blocks invented social proof in copy files (an attributed quote, `trusted by N teams`, `as seen on`) unless `MARKETING_MAP.md → Evidence` backs it or the line carries `[NEEDS PROOF]` / `[SLOT: …]`. After the write, warns about numbers, prices and superlatives with no Evidence row and counts open `[NEEDS PROOF]` marks. |
 
 ## What's Inside
 
@@ -109,7 +110,7 @@ MARKETING_MAP.md          Product, Audience, Positioning, Voice, Banned words,
                           Evidence, Channels, Customer language, Learnings
 CLAUDE.project.md         your project overlay (never touched by upgrades)
 linear.md                 open work: Now / Next / Later (created on install)
-.claude/hooks/            5 hooks + lib/
+.claude/hooks/            6 hooks + lib/
 .claude/settings.json     hook wiring and permissions
 ```
 

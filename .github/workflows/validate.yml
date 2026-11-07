@@ -17,3 +17,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: bash tests/hooks/slop-scan.test.sh
+      - run: bash tests/hooks/claim-scan.test.sh
