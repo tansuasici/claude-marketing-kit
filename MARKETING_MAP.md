@@ -55,3 +55,9 @@
 ## Learnings
 <!-- What a post or campaign taught you, with the number that showed it. -->
 - <date>: <what was tried> → <result> → <what changes next time>
+
+## Changes
+<!-- One row per change to Product, Audience, Positioning or Voice, each with the next version number, so copy written against an older map can be found and rechecked. Newest row first. -->
+| Version | Date | Section | Change | Why |
+|---|---|---|---|---|
+| 1 | <date> | all | first fill | <...> |
