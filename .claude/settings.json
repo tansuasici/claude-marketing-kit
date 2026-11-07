@@ -51,6 +51,15 @@
             "command": ".claude/hooks/block-dangerous-commands.sh"
           }
         ]
+      },
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/claim-scan.sh"
+          }
+        ]
       }
     ],
     "PostToolUse": [
@@ -60,6 +69,10 @@
           {
             "type": "command",
             "command": ".claude/hooks/slop-scan.sh"
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/claim-scan.sh"
           }
         ]
       }

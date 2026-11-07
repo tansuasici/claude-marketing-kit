@@ -8,9 +8,7 @@
 # MARKETING_MAP.md → Voice → **Allowed words:** are skipped. Warn-only: the
 # report goes back to Claude as context, the edit is never blocked. Exits 0.
 #
-# Scanned: .md .mdx .markdown .txt .html .htm, except the kit's own files
-# (agent_docs/, .claude/, CLAUDE.md, AGENTS.md, CLAUDE.project.md,
-# MARKETING_MAP.md, CHANGELOG.md, linear.md).
+# Scanned: copy files only (see lib/copy-file.sh).
 #
 
 set -euo pipefail
@@ -23,19 +21,13 @@ HOOK_LIB="$HOOK_DIR/lib"
 command -v python3 >/dev/null 2>&1 || exit 0
 source "$HOOK_LIB/json-parse.sh"
 source "$HOOK_LIB/emit.sh"
+source "$HOOK_LIB/copy-file.sh"
 
 FILE=$(parse_json_field "file_path")
 [ -z "$FILE" ] && exit 0
 
-case "$FILE" in
-  *.md|*.mdx|*.markdown|*.txt|*.html|*.htm) ;;
-  *) exit 0 ;;
-esac
-
 ROOT="${CLAUDE_PROJECT_DIR:-$PWD}"
-case "/${FILE#"$ROOT"/}" in
-  */agent_docs/*|*/.claude/*|*/CLAUDE.md|*/AGENTS.md|*/CLAUDE.project.md|*/MARKETING_MAP.md|*/CHANGELOG.md|*/linear.md) exit 0 ;;
-esac
+is_copy_file "$FILE" "$ROOT" || exit 0
 
 case "$FILE" in /*) ;; *) FILE="$ROOT/$FILE" ;; esac
 [ -f "$FILE" ] || exit 0
