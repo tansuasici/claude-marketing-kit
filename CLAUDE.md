@@ -22,7 +22,7 @@ At the start of every session, load context in tiers. Do not load everything at 
 Before doing anything, restate the current marketing task in 1–2 sentences.
 Never write copy before Tier 1 is loaded: you can't hold a position you
 haven't read. If `MARKETING_MAP.md` is still the empty template, fill
-Product, Audience and Positioning with the user first.
+Product, Audience and Positioning with the user first (the `brief` skill).
 
 ---
 

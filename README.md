@@ -44,8 +44,9 @@ From your product repo:
 npx @tansuasici/claude-marketing-kit init
 ```
 
-Then start a Claude Code session and fill `MARKETING_MAP.md` (Product,
-Audience, Positioning) with Claude. It is read first every session.
+Then start a Claude Code session and run `/brief`: Claude reads the repo and
+fills `MARKETING_MAP.md` (Product, Audience, Positioning, Voice) with you, one
+section at a time. The map is read first every session.
 
 ### Other ways to install
 
@@ -113,6 +114,7 @@ MARKETING_MAP.md          Product, Audience, Positioning, Voice, Banned words,
 CLAUDE.project.md         your project overlay (never touched by upgrades)
 linear.md                 open work: Now / Next / Later (created on install)
 .claude/hooks/            8 hooks + lib/
+.claude/skills/           /brief (fills MARKETING_MAP.md with you)
 .claude/settings.json     hook wiring and permissions
 ```
 
