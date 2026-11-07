@@ -24,8 +24,11 @@ HOOK_DIR="$(cd "$(dirname "$0")" 2>/dev/null && pwd)" || exit 0
 HOOK_LIB="$HOOK_DIR/lib"
 [ -f "$HOOK_LIB/claim_scan.py" ] || exit 0
 command -v python3 >/dev/null 2>&1 || exit 0
+# shellcheck source=lib/json-parse.sh
 source "$HOOK_LIB/json-parse.sh"
+# shellcheck source=lib/emit.sh
 source "$HOOK_LIB/emit.sh"
+# shellcheck source=lib/copy-file.sh
 source "$HOOK_LIB/copy-file.sh"
 
 FILE=$(parse_json_field "file_path")

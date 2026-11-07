@@ -16,7 +16,9 @@ if [ -z "$HOOK_LIB" ] || [ ! -f "$HOOK_LIB/json-parse.sh" ]; then
   echo "BLOCKED: $(basename "$0") cannot load .claude/hooks/lib/ — refusing to run fail-open. Reinstall kit hooks (re-run install.sh)." >&2
   exit 2
 fi
+# shellcheck source=lib/json-parse.sh
 source "$HOOK_LIB/json-parse.sh"
+# shellcheck source=lib/state-counter.sh
 source "$HOOK_LIB/state-counter.sh"
 
 ROOT="${CLAUDE_PROJECT_DIR:-$PWD}"
