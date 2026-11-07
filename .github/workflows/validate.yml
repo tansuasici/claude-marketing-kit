@@ -11,3 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: ./scripts/check-plugin.sh
+
+  hooks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash tests/hooks/slop-scan.test.sh

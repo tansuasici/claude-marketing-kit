@@ -125,7 +125,7 @@ The one check no list can do. Replace the product name with a competitor's. If t
 
 A banned word can be the literal truth: a product called "Magic Link", a feature named "Unlock". Two ways through:
 
-- Add the term to `MARKETING_MAP.md → Voice` as an allowed exception, with why.
-- Quote it: a customer's verbatim words keep their wording (see `claims-and-evidence.md`), and the source is shown.
+- Add the term to `MARKETING_MAP.md → Voice` on an `- **Allowed words:** term, term` line, and say why. The `slop-scan` hook skips terms listed there.
+- Quote it: a customer's verbatim words keep their wording (see `claims-and-evidence.md`), and the source is shown. The hook skips blockquotes and text in double quotes.
 
 Never silently rewrite a customer quote to remove a banned word.
