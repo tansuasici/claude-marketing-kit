@@ -20,3 +20,7 @@ jobs:
       - run: bash tests/hooks/claim-scan.test.sh
       - run: bash tests/hooks/channel-limits.test.sh
       - run: bash tests/hooks/publish-gate.test.sh
+      - run: bash tests/hooks/session-start.test.sh
+      - run: bash tests/hooks/prompt-router.test.sh
+      - run: bash tests/hooks/branch-protect.test.sh
+      - run: bash tests/hooks/block-dangerous-commands.test.sh
