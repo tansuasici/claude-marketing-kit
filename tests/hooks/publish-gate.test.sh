@@ -87,6 +87,7 @@ for t in notion-create-pages notion-update-page notion-create-comment notion-que
   expect_empty "Notion $t is never gated" "$(call "mcp__notion__$t" '{"page_id":"x","command":"update_properties"}' "$KIT")"
 done
 expect_empty "Slack send_message is not a post" "$(call mcp__slack__send_message '{"text":"Hi"}' "$KIT")"
+expect_empty "an Edits export writes a local file, not a post" "$(call mcp__edits__export '{"path":"/tmp/cut.mp4"}')"
 expect_empty "non-MCP tools are ignored" "$(call Write '{"file_path":"x.md","content":"publish"}' "$KIT")"
 expect_empty "bad JSON is silent" "$(printf 'nope' | CLAUDE_PROJECT_DIR="$KIT" "$HOOK")"
 
