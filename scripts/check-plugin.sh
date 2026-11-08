@@ -11,6 +11,8 @@
 #     hook command is not rooted at "${CLAUDE_PLUGIN_ROOT}"
 #   - a .claude/skills/<name>/SKILL.md lacks `name: <name>` or a one-line
 #     `description:` (what `cmk skills` and Claude Code read)
+#   - a .claude/agents/<name>.md lacks `name: <name>` or a one-line
+#     `description:` (what Claude Code reads to delegate)
 #
 # Usage:
 #   ./scripts/check-plugin.sh
@@ -83,6 +85,21 @@ for skill in .claude/skills/*/SKILL.md; do
     fail=1
   else
     echo "ok   skill $dir"
+  fi
+done
+
+for agent in .claude/agents/*.md; do
+  [ -f "$agent" ] || continue
+  stem=$(basename "$agent" .md)
+  front=$(awk 'NR == 1 && $0 != "---" { exit } NR > 1 && $0 == "---" { exit } NR > 1' "$agent")
+  if ! printf '%s\n' "$front" | grep -qx "name: $stem"; then
+    echo "FAIL $agent: frontmatter needs \`name: $stem\`"
+    fail=1
+  elif ! printf '%s\n' "$front" | grep -qE '^description: *[^ >|]'; then
+    echo "FAIL $agent: frontmatter needs a one-line \`description:\`"
+    fail=1
+  else
+    echo "ok   agent $stem"
   fi
 done
 

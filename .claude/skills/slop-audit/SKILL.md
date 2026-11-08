@@ -7,7 +7,7 @@ description: Check a draft for hype words, filler, structural tells and sentence
 
 Check one draft for slop: the words, phrases and shapes that make copy read as machine-written or interchangeable. The lists and the tells are in `agent_docs/slop-signs.md`; read it first. This file is the procedure.
 
-The `slop-scan` hook counts list words, em-dashes and emoji bullets. This skill does the part it can't: the soft words in context, the structural tells, the competitor test and the fit with this product's voice.
+The `slop-scan` hook counts list words, em-dashes and emoji bullets. This skill does the part it can't: the soft words in context, the structural tells, the competitor test and the fit with this product's voice. The `brand-voice-reviewer` agent gives a second read from a context that didn't write the draft.
 
 ## Input
 
