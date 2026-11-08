@@ -108,6 +108,7 @@ A draft says which channel it is for, so `.claude/hooks/channel-limits.sh` can c
 - One post per file, or several separated by a `---` line (an X thread, a carousel's slides). Each part is counted on its own.
 - YouTube: the first line is the title (a leading `#` is dropped); the rest is the description.
 - A video script is not a post. It has `channel: video` and names its target in `for:`, in `drafts/video/<slug>.md`. The frontmatter is required: without it, a slug like `tiktok-launch` would be counted as a TikTok caption. The hook counts nothing in it, and `social-publish` won't send it.
+- A post with media can name it in the frontmatter: `media:` lists the public links and `script:` is the video script behind a caption. Neither is counted or sent as text (`social-publish → Media`).
 - HTML comments (`<!-- note -->`) are notes to self and are not counted. Markdown is counted as written: if it gets pasted raw, it ships raw.
 
 The hook reports the counted lengths even when they fit; use them for Verification step 3. Facebook gets a count but no limit, since the figure above is unverified.
