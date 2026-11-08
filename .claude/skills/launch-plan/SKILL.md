@@ -82,7 +82,7 @@ Baseline before launch: <number and date> | not measured
    - check the limit rows in `channels.md` for those channels; recheck any older than ~90 days, as that file asks.
 3. **Idea.** Write the one idea, the proof and the reader's next step. Compare it with `Positioning → Why switch`, and say if the two don't line up. Check `Learnings` for past launches and channels.
 4. **Pieces.** List only what this launch needs, from `MARKETING_MAP.md → Channels` and any place the user agreed to. For each one, name the skill that writes it: `landing-copy`, `social-post`, `repurpose`, `email-sequence`, or another that exists in `.claude/skills/`. If no skill covers a piece, write `by hand`. Pieces that repeat one idea on several channels are one `social-post` and then `repurpose`. Say what the reader sees first and why that order.
-5. **Go / no-go and measurement.** Write what must be true on T-1, and what happens if it isn't. Name what you'll record, when and from where, and take the baseline now if you can. Results go to `MARKETING_MAP.md → Learnings` with the number.
+5. **Go / no-go and measurement.** Write what must be true on T-1, and what happens if it isn't. Name what you'll record, when and from where, and take the baseline now if you can. After launch, `campaign-report` writes up the results and adds what the user approves to `MARKETING_MAP.md → Learnings`, with the number.
 6. **Gate.** Run `claim-audit` on the plan if it states any product claim, and apply only the changes the user approves.
 7. **Report**, then stop:
    - the file path and the date, or that it isn't set;
