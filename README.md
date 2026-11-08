@@ -116,6 +116,7 @@ linear.md                 open work: Now / Next / Later (created on install)
 .claude/hooks/            8 hooks + lib/
 .claude/skills/           /brief (fills MARKETING_MAP.md with you),
                           /claim-audit (checks a draft's claims against Evidence)
+                          /slop-audit (hype, filler, competitor test, voice)
 .claude/settings.json     hook wiring and permissions
 ```
 

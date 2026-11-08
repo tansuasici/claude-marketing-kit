@@ -82,7 +82,7 @@ When Product, Audience, Positioning or Voice changes, add a row to `MARKETING_MA
 
 ## Verification (before calling a draft done)
 1. **Evidence.** Every claim has an Evidence row or a `[NEEDS PROOF]` mark. `.claude/hooks/claim-scan.sh` blocks unsourced quotes and "used by" lines and flags numbers and superlatives with no row; it can't judge whether a row really backs the sentence (the `claim-audit` skill does).
-2. **Banned words.** None present. `.claude/hooks/slop-scan.sh` flags list words in copy files after each write; it can't run the competitor test.
+2. **Banned words.** None present. `.claude/hooks/slop-scan.sh` flags list words in copy files after each write; it can't run the competitor test or judge voice (the `slop-audit` skill does).
 3. **Limits.** Length, hashtags and media fit the channel row. Say whether you **counted** or are **estimating**. `.claude/hooks/channel-limits.sh` counts drafts that name their channel (`agent_docs/channels.md → Draft files`); it can't check media or aspect ratio.
 4. **Competitor test.** Could a competitor post this unchanged? If yes, it isn't done.
 5. **Read it as the buyer.** Would the person in Audience stop scrolling, and is the next step obvious?
