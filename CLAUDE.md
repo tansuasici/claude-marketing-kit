@@ -85,7 +85,7 @@ When Product, Audience, Positioning or Voice changes, add a row to `MARKETING_MA
 2. **Banned words.** None present. `.claude/hooks/slop-scan.sh` flags list words in copy files after each write; it can't run the competitor test or judge voice (the `slop-audit` skill does, and the `brand-voice-reviewer` agent gives a second read from a context that didn't write the draft).
 3. **Limits.** Length, hashtags and media fit the channel row. Say whether you **counted** or are **estimating**. `.claude/hooks/channel-limits.sh` counts drafts that name their channel (`agent_docs/channels.md → Draft files`); it can't check media or aspect ratio.
 4. **Competitor test.** Could a competitor post this unchanged? If yes, it isn't done.
-5. **Read it as the buyer.** Would the person in Audience stop scrolling, and is the next step obvious?
+5. **Read it as the buyer.** Would the person in Audience stop scrolling, and is the next step obvious? The `skeptical-buyer` agent gives a second read from a context that didn't write the draft; it's one read, not a measurement.
 
 Never mark a draft complete without these checks. "It reads well" is not verification.
 
