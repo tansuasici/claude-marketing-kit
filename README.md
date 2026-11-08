@@ -126,6 +126,7 @@ linear.md                 open work: Now / Next / Later (created on install)
                           /launch-plan (readiness, pieces, go/no-go, what to measure)
                           /voice-of-customer (users' words, verbatim, with source and permission)
                           /seo-audit (one page, every check says how it ran, no rank promises)
+                          /campaign-report (numbers with sources, what can't be concluded, Learnings)
 .claude/settings.json     hook wiring and permissions
 ```
 
