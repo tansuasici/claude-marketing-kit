@@ -119,6 +119,7 @@ linear.md                 open work: Now / Next / Later (created on install)
                           /slop-audit (hype, filler, competitor test, voice)
                           /landing-copy (writes a landing page from the map)
                           /positioning (tests the position, proposes a new one)
+                          /competitor-brief (one linked page per alternative)
 .claude/settings.json     hook wiring and permissions
 ```
 

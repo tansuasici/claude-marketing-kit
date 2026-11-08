@@ -9,7 +9,8 @@
 #
 # Copy files: .md .mdx .markdown .txt .html .htm, except the kit's own files
 # (agent_docs/, .claude/, CLAUDE.md, AGENTS.md, CLAUDE.project.md,
-# MARKETING_MAP.md, CHANGELOG.md, linear.md).
+# MARKETING_MAP.md, CHANGELOG.md, linear.md) and research/ (competitor
+# briefs and other notes that quote other people's marketing on purpose).
 #
 
 is_copy_file() {
@@ -19,7 +20,7 @@ is_copy_file() {
     *) return 1 ;;
   esac
   case "/${file#"$root"/}" in
-    */agent_docs/*|*/.claude/*|*/CLAUDE.md|*/AGENTS.md|*/CLAUDE.project.md|*/MARKETING_MAP.md|*/CHANGELOG.md|*/linear.md) return 1 ;;
+    */agent_docs/*|*/.claude/*|*/research/*|*/CLAUDE.md|*/AGENTS.md|*/CLAUDE.project.md|*/MARKETING_MAP.md|*/CHANGELOG.md|*/linear.md) return 1 ;;
   esac
   return 0
 }
