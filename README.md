@@ -88,9 +88,10 @@ your own scheduler and turn a channel on:
 2. Set `publish: on` for that channel in `MARKETING_MAP.md → Channels`.
 3. Run `/social-publish <draft>`. It checks the draft, shows the exact text, channel, account and time, and sends only after your yes. One approval covers one post; `publish-gate.sh` blocks channels that are still `off` and asks again in the permission prompt.
 
-Planned channels: X, LinkedIn, Instagram, Facebook, YouTube, TikTok. Video
-work is planned for Remotion (code-based video) and Instagram Edits for Mac
-(through its MCP).
+Planned channels: X, LinkedIn, Instagram, Facebook, YouTube, TikTok.
+`/video-script` writes the script, scene list and subtitles for any editing
+tool. Producing the video is planned for Remotion (code-based video) and
+Instagram Edits for Mac (through its MCP).
 
 ## Hooks
 
@@ -122,6 +123,7 @@ linear.md                 open work: Now / Next / Later (created on install)
                           /competitor-brief (one linked page per alternative)
                           /social-post (one post, one channel, counted)
                           /repurpose (rewrites one idea for another channel)
+                          /video-script (one video: scenes, spoken lines, subtitles; no tool settings)
                           /email-sequence (one trigger, one goal, 5 emails at most)
                           /launch-plan (readiness, pieces, go/no-go, what to measure)
                           /voice-of-customer (users' words, verbatim, with source and permission)

@@ -1,6 +1,6 @@
 # Copywriting
 
-How to write the sentences once the position is set. Used by `landing-copy`, `social-post`, `email-sequence` and `repurpose`. Assumes `MARKETING_MAP.md` is filled; if Positioning is empty, stop and run `brief` first.
+How to write the sentences once the position is set. Used by `landing-copy`, `social-post`, `email-sequence`, `repurpose` and `video-script`. Assumes `MARKETING_MAP.md` is filled; if Positioning is empty, stop and run `brief` first.
 
 ---
 
