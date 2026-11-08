@@ -89,6 +89,8 @@ mkdir -p "$proj/drafts/linkedin"; printf 'Hi.\n' > "$proj/drafts/linkedin/a.md"
 expect_has "relative paths resolve against the project" "$(post "drafts/linkedin/a.md" "$proj")" "post: 3/3000"
 mkdir -p "$proj/drafts/email"; printf -- '---\nchannel: email\n---\nHi.\n' > "$proj/drafts/email/x-launch.md"
 expect_empty "frontmatter naming a channel with no limits beats a path token" "$(post "drafts/email/x-launch.md" "$proj")"
+mkdir -p "$proj/drafts/video"; printf -- '---\nchannel: video\nfor: tiktok\n---\nHi.\n' > "$proj/drafts/video/tiktok-launch.md"
+expect_empty "a video script is not counted as its target's caption" "$(post "drafts/video/tiktok-launch.md" "$proj")"
 
 # ---- limits match agent_docs/channels.md ------------------------------------
 # The hook hard-codes these; edit one without the other and this fails.
