@@ -100,6 +100,20 @@ and out of your repo. Claude works only in a new project, and an export is a
 local file, never a post. The tool map and rules are in
 `agent_docs/video-tools.md`; only read-only calls have been tried so far.
 
+To use Remotion, check its licence first: free for individuals, for teams of up
+to 3 and, with limits, for non-profits; a company of 4 or more needs a paid
+licence. Remotion's own skills install into your Remotion project, not through
+this kit:
+
+```bash
+npx create-video --yes --blank my-video
+cd my-video
+npx remotion skills add
+```
+
+The steps and rules are in `agent_docs/video-tools.md`. This kit hasn't rendered
+a video with them yet.
+
 ## Hooks
 
 | Hook | Event | Does |
