@@ -114,7 +114,8 @@ MARKETING_MAP.md          Product, Audience, Positioning, Voice, Banned words,
 CLAUDE.project.md         your project overlay (never touched by upgrades)
 linear.md                 open work: Now / Next / Later (created on install)
 .claude/hooks/            8 hooks + lib/
-.claude/skills/           /brief (fills MARKETING_MAP.md with you)
+.claude/skills/           /brief (fills MARKETING_MAP.md with you),
+                          /claim-audit (checks a draft's claims against Evidence)
 .claude/settings.json     hook wiring and permissions
 ```
 
