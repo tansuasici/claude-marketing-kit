@@ -122,6 +122,7 @@ linear.md                 open work: Now / Next / Later (created on install)
                           /competitor-brief (one linked page per alternative)
                           /social-post (one post, one channel, counted)
                           /repurpose (rewrites one idea for another channel)
+                          /email-sequence (one trigger, one goal, 5 emails at most)
 .claude/settings.json     hook wiring and permissions
 ```
 

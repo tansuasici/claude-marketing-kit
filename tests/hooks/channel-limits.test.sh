@@ -87,6 +87,8 @@ printf 'Plain page.\n' > "$proj/page.md"
 expect_empty "folders above the project never pick the channel" "$(post "$proj/page.md" "$proj")"
 mkdir -p "$proj/drafts/linkedin"; printf 'Hi.\n' > "$proj/drafts/linkedin/a.md"
 expect_has "relative paths resolve against the project" "$(post "drafts/linkedin/a.md" "$proj")" "post: 3/3000"
+mkdir -p "$proj/drafts/email"; printf -- '---\nchannel: email\n---\nHi.\n' > "$proj/drafts/email/x-launch.md"
+expect_empty "frontmatter naming a channel with no limits beats a path token" "$(post "drafts/email/x-launch.md" "$proj")"
 
 # ---- limits match agent_docs/channels.md ------------------------------------
 # The hook hard-codes these; edit one without the other and this fails.
