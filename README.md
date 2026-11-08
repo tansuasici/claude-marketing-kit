@@ -120,6 +120,7 @@ linear.md                 open work: Now / Next / Later (created on install)
                           /landing-copy (writes a landing page from the map)
                           /positioning (tests the position, proposes a new one)
                           /competitor-brief (one linked page per alternative)
+                          /social-post (one post, one channel, counted)
 .claude/settings.json     hook wiring and permissions
 ```
 
