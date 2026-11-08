@@ -125,6 +125,7 @@ linear.md                 open work: Now / Next / Later (created on install)
                           /email-sequence (one trigger, one goal, 5 emails at most)
                           /launch-plan (readiness, pieces, go/no-go, what to measure)
                           /voice-of-customer (users' words, verbatim, with source and permission)
+                          /seo-audit (one page, every check says how it ran, no rank promises)
 .claude/settings.json     hook wiring and permissions
 ```
 
