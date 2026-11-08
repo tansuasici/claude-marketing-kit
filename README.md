@@ -86,7 +86,7 @@ your own scheduler and turn a channel on:
 
 1. Add a scheduler MCP, for example Buffer: `claude mcp add --transport http buffer https://mcp.buffer.com/mcp`, then run `/mcp` to sign in.
 2. Set `publish: on` for that channel in `MARKETING_MAP.md → Channels`.
-3. Approve each post, channel and time in the permission prompt. One approval covers one post; `publish-gate.sh` blocks channels that are still `off`.
+3. Run `/social-publish <draft>`. It checks the draft, shows the exact text, channel, account and time, and sends only after your yes. One approval covers one post; `publish-gate.sh` blocks channels that are still `off` and asks again in the permission prompt.
 
 Planned channels: X, LinkedIn, Instagram, Facebook, YouTube, TikTok. Video
 work is planned for Remotion (code-based video) and Instagram Edits for Mac
@@ -127,6 +127,7 @@ linear.md                 open work: Now / Next / Later (created on install)
                           /voice-of-customer (users' words, verbatim, with source and permission)
                           /seo-audit (one page, every check says how it ran, no rank promises)
                           /campaign-report (numbers with sources, what can't be concluded, Learnings)
+                          /social-publish (opt-in, one draft, your yes on the exact post, never sent twice)
 .claude/settings.json     hook wiring and permissions
 ```
 

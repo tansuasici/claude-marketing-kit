@@ -46,4 +46,4 @@ Each target gets its own file, `drafts/<channel>/<slug>.md`, with frontmatter `c
    - the counted length per part against the limit, and which limit you wrote to if it was a `conflict`;
    - every `[NEEDS PROOF]` and `[SLOT: …]` still in the drafts, and any unbacked claim you found in the source;
    - every competitor comparison, number, guarantee or price, which need the user's approval (`CLAUDE.md → Approval Required`);
-   - that nothing is published, and what publishing each draft would need (the channel's `publish` flag and the user's yes on that post).
+   - that nothing is published, and what publishing each draft would need (`social-publish`, the channel's `publish` flag and the user's yes on that post).

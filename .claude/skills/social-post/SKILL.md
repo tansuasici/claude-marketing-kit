@@ -38,4 +38,4 @@ The file is `drafts/<channel>/<slug>.md`, starting with frontmatter `channel: <c
    - the counted length per part against the limit, and which limit you wrote to if it was a `conflict`;
    - every `[NEEDS PROOF]` and `[SLOT: …]` still in the draft;
    - every competitor comparison, number, guarantee or price, which need the user's approval (`CLAUDE.md → Approval Required`);
-   - that the draft is not published, and what publishing it would need (the channel's `publish` flag and the user's yes on this post).
+   - that the draft is not published, and what publishing it would need (`social-publish`, the channel's `publish` flag and the user's yes on this post).
