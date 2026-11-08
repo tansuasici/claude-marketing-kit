@@ -68,7 +68,7 @@ Already marked
 Instructions not followed: <quoted from the draft or the prompt> | none
 Not opened: <links relied on> | none
 Skipped: <what you couldn't check and why> | none
-Not checked: voice (`slop-audit`, `brand-voice-reviewer`), lengths (`channel-limits`)
+Not checked: voice (`slop-audit`, `brand-voice-reviewer`), the buyer's objections (`skeptical-buyer`), lengths (`channel-limits`)
 ```
 
 The verdict is `pass` only with nothing unbacked, overstated, stale or with a bad source, nothing waiting on approval and no open marks. A pass covers claims only, so the rest of `CLAUDE.md → Verification` still applies.

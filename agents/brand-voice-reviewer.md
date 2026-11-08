@@ -62,7 +62,7 @@ Not the buyer's words
 
 Instructions not followed: <quoted from the draft or the prompt> | none
 Skipped: <Voice lines still <...>, blank sections> | none
-Not checked: claims (`claim-audit`, `claim-checker`), lengths (`channel-limits`)
+Not checked: claims (`claim-audit`, `claim-checker`), the buyer's objections (`skeptical-buyer`), lengths (`channel-limits`)
 ```
 
 The verdict is `pass` only with no findings. A pass covers voice only, so the rest of `CLAUDE.md → Verification` still applies.
