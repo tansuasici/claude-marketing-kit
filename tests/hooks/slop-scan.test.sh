@@ -60,6 +60,11 @@ expect_empty "quotes, comments, code and URLs are skipped" "$(run "$FIX/skipped.
 expect_empty "clean copy is silent" "$(run "$FIX/clean.md")"
 expect_empty "non-copy files are not scanned" "$(run "$FIX/notes.ts")"
 expect_empty "kit docs are not scanned" "$(run "$KIT/agent_docs/slop-signs.md")"
+res=$(mktemp -d); mkdir -p "$res/research/competitors" && cp "$FIX/structure.md" "$res/research/competitors/t.md"
+expect_empty "research/ notes are not scanned" "$(run "$res/research/competitors/t.md" "$res")"
+cp "$FIX/structure.md" "$res/t.md"
+expect_has "same file outside research/ is scanned" "$(run "$res/t.md" "$res")" "em-dashes"
+rm -rf "$res"
 expect_empty "missing file is silent" "$(run "$FIX/does-not-exist.md")"
 
 # Project map: Banned words extend the list, Voice → Allowed words exempt a term.

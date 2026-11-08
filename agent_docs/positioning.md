@@ -50,7 +50,7 @@ A position is ready when all of these hold:
 
 ## Competitor briefs
 
-`competitor-brief` writes one page per alternative. Keep it to what you can link:
+`competitor-brief` writes one page per alternative to `research/competitors/<slug>.md`. The copy hooks skip `research/`, since a brief quotes the alternative's own marketing on purpose; it is internal and never ships as copy. Keep it to what you can link:
 
 | Field | Content |
 |---|---|

@@ -100,6 +100,7 @@ expect_has "\"trusted by N teams\" blocks" "$out" "exit=2" "Trusted by 500+ team
 out=$(pre Write "$FIX/x.md" "$FIX/seen.md")
 expect_has "\"as seen on\" blocks" "$out" "exit=2" "As seen on"
 
+expect_pass "research/ notes are not scanned" "$(pre Write "$KIT/research/competitors/x.md" "$FIX/social.md")"
 expect_pass "[SLOT] and [NEEDS PROOF] lines pass" "$(pre Write "$FIX/x.md" "$FIX/slot.md")"
 expect_pass "a quoted term, a list item and \"used by the hook\" pass" "$(pre Write "$FIX/x.md" "$FIX/plain-quote.md")"
 expect_pass "non-copy files are not blocked" "$(pre Write "$FIX/x.ts" "$FIX/testimonial.md")"
