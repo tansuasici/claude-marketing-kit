@@ -90,8 +90,9 @@ your own scheduler and turn a channel on:
 
 Planned channels: X, LinkedIn, Instagram, Facebook, YouTube, TikTok.
 `/video-script` writes the script, scene list and subtitles for any editing
-tool. Producing the video from it is planned, with Remotion (code-based video)
-and Instagram Edits for Mac.
+tool. `/video-produce` turns that script into a local video file with Remotion
+(code-based video) or Instagram Edits for Mac, and never publishes it. It hasn't
+been run end to end yet.
 
 To connect Edits (Apple silicon Mac, Instagram account): in the app, open
 Settings → Automation, turn on the server, and run the Claude Code command it
@@ -145,6 +146,7 @@ linear.md                 open work: Now / Next / Later (created on install)
                           /social-post (one post, one channel, counted)
                           /repurpose (rewrites one idea for another channel)
                           /video-script (one video: scenes, spoken lines, subtitles; no tool settings)
+                          /video-produce (one script, one tool, one local file; checked against the script)
                           /email-sequence (one trigger, one goal, 5 emails at most)
                           /launch-plan (readiness, pieces, go/no-go, what to measure)
                           /voice-of-customer (users' words, verbatim, with source and permission)
