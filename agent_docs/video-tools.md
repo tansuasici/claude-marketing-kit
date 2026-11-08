@@ -1,6 +1,6 @@
 # Video tools
 
-What the tools that cut a video can do, and the limits on using them. `video-script` writes the plan with no tool settings; this file is what turns that plan into calls. It holds facts and rules, not a procedure.
+What the tools that cut a video can do, and the limits on using them. `video-script` writes the plan with no tool settings; this file is what turns that plan into calls. It holds facts and rules; the procedure is in `video-produce`.
 
 Facts carry a source type, as in `channels.md → These numbers are claims too`. A tool changes faster than this file: read each tool's current schema before calling it. The tool's own schema wins over anything here.
 
