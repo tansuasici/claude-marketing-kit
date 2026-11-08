@@ -88,6 +88,12 @@ your own scheduler and turn a channel on:
 2. Set `publish: on` for that channel in `MARKETING_MAP.md → Channels`.
 3. Run `/social-publish <draft>`. It checks the draft, shows the exact text, channel, account and time, and sends only after your yes. One approval covers one post; `publish-gate.sh` blocks channels that are still `off` and asks again in the permission prompt.
 
+Buffer takes no file uploads, so a video goes out through a link. Put the file on
+a host you choose, at a public, direct, permanent HTTPS link, and list that link
+under `media:` in the caption draft's frontmatter. The kit checks the link and
+never uploads anything. A script with open marks stops the post. This hasn't been
+tried with a real Buffer account yet.
+
 Planned channels: X, LinkedIn, Instagram, Facebook, YouTube, TikTok.
 `/video-script` writes the script, scene list and subtitles for any editing
 tool. `/video-produce` turns that script into a local video file with Remotion

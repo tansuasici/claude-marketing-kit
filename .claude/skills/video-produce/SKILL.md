@@ -20,7 +20,7 @@ One script, one tool, one output file per run. A second format or ratio is a sec
 - **The script is the source.** Don't write new spoken lines, on-screen text or scenes, and don't edit the script file. If something has to change, report it and let the user change the script through `video-script`.
 - **Scripts only.** A file without `channel: video` in its frontmatter stops the run. Don't build a video from a post, a brief or a chat message.
 - **A yes before anything is made.** Nothing gets created, downloaded or added to a project until the user has answered the plan in step 5.
-- **Open marks make a review cut.** A script with `[NEEDS PROOF]` or an unfilled `[SLOT: …]` can be built for review, if the user asks. The result is labelled a review cut in the report and doesn't go on to publishing.
+- **Open marks make a review cut.** A script with `[NEEDS PROOF]` or an unfilled `[SLOT: …]` can be built for review, if the user asks. The result is labelled a review cut in the report and doesn't go on to publishing. A music or footage slot doesn't count once the user has picked for it or chosen to leave it out; it stays in the script, since this skill doesn't edit it.
 - **Missing material stays missing.** A slot with no recording becomes a visible placeholder naming what's needed. Don't fill it with a drawing, a generated clip or stock footage.
 - **The voice is a recording.** Spoken lines come from the user's recording. No text-to-speech and no recording from the microphone unless the user asks for it, and if they do, the report says so.
 - **Files stay put.** The output is `out/<slug>.mp4` in the Remotion project, or a path the user names for Edits. Don't commit it or overwrite an earlier one. If the output folder is inside a git repo, check with `git check-ignore`. If it isn't ignored, ask before adding it to that project's `.gitignore`.
@@ -77,4 +77,4 @@ One script, one tool, one output file per run. A second format or ratio is a sec
    - every difference between the recording and the script, and every cut that removes a wait or speeds up a clip;
    - music and footage used, with their licence, or none;
    - what you checked by looking at frames, and that the user still has to watch it with sound, since you can't judge audio;
-   - that nothing has been published, and that publishing needs no open marks, the caption from `social-post`, the video at a public link and `social-publish`.
+   - that nothing has been published or uploaded, and that publishing needs no open marks, the caption from `social-post`, the file on a host the user picks, its link in the caption's `media:` and `social-publish` (`social-publish → Media`).

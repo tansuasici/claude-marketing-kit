@@ -19,7 +19,7 @@ The file is `drafts/<channel>/<slug>.md`, starting with frontmatter `channel: <c
 - **One idea.** If the draft needs "also", the rest is a second post. Say so and stop at one.
 - **Proof or nothing.** The post stands on one Evidence row or one artefact (a command, a diff, a screenshot). If there is neither, say there is nothing to post yet instead of writing around it.
 - **Marks at first write.** A claim with no Evidence row gets `[NEEDS PROOF: reason]` in the same write. Quotes come verbatim from `Customer language` or `Evidence` with their source.
-- **Slots, not assets.** An image, video, carousel slide or screenshot goes in as `[SLOT: what it must show, aspect ratio]`. Instagram, TikTok and Shorts posts always have one; no visual plan, no post for those channels. For a video, `video-script` writes the plan and this post is its caption.
+- **Slots, not assets.** An image, video, carousel slide or screenshot goes in as `[SLOT: what it must show, aspect ratio]`. Instagram, TikTok and Shorts posts always have one; no visual plan, no post for those channels. For a video, `video-script` writes the plan and this post is its caption; add `script: drafts/video/<slug>.md` to the frontmatter. The slot stays until the file is hosted (`social-publish → Media`).
 - **Write to the lower number.** Where `channels.md` marks a limit `conflict`, write to the lower one and say so; where it is `unverified` (Facebook), give no limit and ask the user to check the composer. X is 280 unless the user confirmed a paid tier.
 - **Drafts only.** Never publish, schedule or queue. That needs `publish: on` and the user's approval of this exact post (`CLAUDE.md → Publishing`).
 
