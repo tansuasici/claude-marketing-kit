@@ -160,6 +160,7 @@ linear.md                 open work: Now / Next / Later (created on install)
                           /campaign-report (numbers with sources, what can't be concluded, Learnings)
                           /social-publish (opt-in, one draft, your yes on the exact post, never sent twice)
 .claude/agents/           brand-voice-reviewer (read-only second read of a draft, from a context that didn't write it)
+                          claim-checker (read-only claim check of a draft against Evidence, from the same kind of context)
 .claude/settings.json     hook wiring and permissions
 ```
 

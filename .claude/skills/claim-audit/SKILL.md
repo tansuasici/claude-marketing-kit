@@ -7,7 +7,7 @@ description: Check every claim in a draft against MARKETING_MAP.md → Evidence,
 
 Check one draft, sentence by sentence, against `MARKETING_MAP.md → Evidence`. The rules for what is a claim and what counts as proof are in `agent_docs/claims-and-evidence.md`; read it first. This file is the procedure.
 
-The hooks catch shapes (a number with no row, an attributed quote). This skill does the part they can't: whether the row actually backs the sentence.
+The hooks catch shapes (a number with no row, an attributed quote). This skill does the part they can't: whether the row actually backs the sentence. The `claim-checker` agent gives a second check from a context that didn't write the draft.
 
 ## Input
 
