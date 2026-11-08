@@ -121,6 +121,7 @@ linear.md                 open work: Now / Next / Later (created on install)
                           /positioning (tests the position, proposes a new one)
                           /competitor-brief (one linked page per alternative)
                           /social-post (one post, one channel, counted)
+                          /repurpose (rewrites one idea for another channel)
 .claude/settings.json     hook wiring and permissions
 ```
 
