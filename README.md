@@ -90,8 +90,15 @@ your own scheduler and turn a channel on:
 
 Planned channels: X, LinkedIn, Instagram, Facebook, YouTube, TikTok.
 `/video-script` writes the script, scene list and subtitles for any editing
-tool. Producing the video is planned for Remotion (code-based video) and
-Instagram Edits for Mac (through its MCP).
+tool. Producing the video from it is planned, with Remotion (code-based video)
+and Instagram Edits for Mac.
+
+To connect Edits (Apple silicon Mac, Instagram account): in the app, open
+Settings → Automation, turn on the server, and run the Claude Code command it
+shows in your own terminal. The command holds a token, so keep it out of chat
+and out of your repo. Claude works only in a new project, and an export is a
+local file, never a post. The tool map and rules are in
+`agent_docs/video-tools.md`; only read-only calls have been tried so far.
 
 ## Hooks
 
