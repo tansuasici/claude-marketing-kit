@@ -105,6 +105,14 @@ if [ ! -f "$filled/.hook-state/hook-firings.json" ] && [ -f "$filled/.hook-state
 else
   bad "firing counters reset; .hook-state ignores itself" "  $(ls -a "$filled/.hook-state")"
 fi
+gitdir=$(mktemp -d); git -C "$gitdir" init -q
+start_json "$gitdir" >/dev/null
+if [ -z "$(git -C "$gitdir" status --porcelain)" ]; then
+  ok ".hook-state stays out of git status"
+else
+  bad ".hook-state stays out of git status" "  $(git -C "$gitdir" status --porcelain)"
+fi
+rm -rf "$gitdir"
 
 printf '\n%d passed, %d failed\n' "$pass" "$fail"
 [ "$fail" -eq 0 ]
