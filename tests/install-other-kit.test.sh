@@ -3,9 +3,14 @@
 # install-other-kit.test.sh — install.sh and uninstall.sh next to another Claude kit
 #
 # Usage: bash tests/install-other-kit.test.sh
+#        OTHER_KITS=/dir bash tests/install-other-kit.test.sh
 #
 # The other kit is faked: the two files only it ships and a CLAUDE.md are all
 # the check looks at, and all a refused run must leave alone.
+#
+# With OTHER_KITS set to a folder holding checkouts named design, code and
+# research, the last section also runs their real installers, in both orders.
+# CI doesn't, so its result doesn't depend on those repos' main branches.
 #
 set -uo pipefail
 cd "$(dirname "$0")/.." || exit 1
@@ -41,7 +46,7 @@ other_kit() {
   printf '%s' "$d"
 }
 
-snapshot() { (cd "$1" && find . -type f -exec cksum {} + | sort); }
+snapshot() { (cd "$1" && find . -type f -exec cksum {} + | LC_ALL=C sort); }
 
 # refuses LABEL SCRIPT DIR [FLAGS…] → exit 2, the reason on stderr, the folder untouched
 refuses() {
@@ -128,10 +133,79 @@ passes "uninstall" "$code" "$out" gone "$d/MARKETING_MAP.md"
 
 echo "the way out the uninstall message gives"
 d=$(other_kit design)
+printf 'mine\n' > "$d/CLAUDE.project.md"
+msg=$(bash "$KIT/uninstall.sh" "$d" --force 2>&1)
+for word in --keep-project --force --upgrade; do
+  if [[ "$msg" == *"$word"* ]]; then ok "the message names $word"; else bad "the message names $word" "  $msg"; fi
+done
 mv "$d/DESIGN_MAP.md" "$work/moved.md"
-out=$(bash "$KIT/uninstall.sh" "$d" --force 2>&1); code=$?
+out=$(bash "$KIT/uninstall.sh" "$d" --force --keep-project 2>&1); code=$?
 mv "$work/moved.md" "$d/DESIGN_MAP.md"
 passes "moving the map aside lets it run" "$code" "$out" has "$d/DESIGN_MAP.md"
+passes "and the shared overlay stays" 0 "" is_mine "$d/CLAUDE.project.md"
+
+if [ -z "${OTHER_KITS:-}" ]; then
+  echo "real kits: skipped, OTHER_KITS is not set"
+else
+  # install_other KIT[:PROFILE] DIR. The Code Kit installs into the current folder.
+  install_other() {  # KIT[:PROFILE] DIR [FLAGS…]
+    local kit="$1" dir="$2"; shift 2
+    case "$kit" in
+      code:*) (cd "$dir" && bash "$OTHER_KITS/code/install.sh" --local "$OTHER_KITS/code" --profile "${kit#code:}" "$@") ;;
+      *)      bash "$OTHER_KITS/$kit/install.sh" "$dir" "$@" ;;
+    esac </dev/null >/dev/null 2>&1
+  }
+  restore_flag() { case "$1" in code:*) echo --upgrade ;; *) echo --force ;; esac; }
+  # marker KIT → the file of that kit's pair the refusal names first
+  marker() {
+    case "$1" in
+      design)   echo DESIGN_MAP.md ;;
+      code:*)   echo .claude/hooks/secret-scan.sh ;;
+      research) echo MANUSCRIPT_MAP.md ;;
+    esac
+  }
+
+  echo "real kits, in both orders"
+  for kit in design code:minimal code:standard code:strict research; do
+    d=$(fresh_dir); git -C "$d" init -q
+    if ! install_other "$kit" "$d"; then bad "$kit installs" "  exit=$?"; continue; fi
+    refuses "$kit first: install"         install.sh "$d"
+    refuses "$kit first: install --force" install.sh "$d" --force
+    refuses "$kit first: uninstall"       uninstall.sh "$d" --force
+
+    d=$(fresh_dir); git -C "$d" init -q; bash "$KIT/install.sh" "$d" >/dev/null 2>&1
+    before=$(snapshot "$d")
+    install_other "$kit" "$d"; code=$?
+    if [ "$code" -eq 2 ] && [ "$(snapshot "$d")" = "$before" ]; then
+      ok "this kit first: $kit refuses and changes nothing"
+    else
+      bad "this kit first: $kit refuses and changes nothing" "  exit=$code"
+    fi
+
+    # Two kits in one folder, as an installer without this check left them. The
+    # overlay and task files are the first kit's: installers keep those.
+    d=$(fresh_dir); git -C "$d" init -q; install_other "$kit" "$d"
+    before=$(snapshot "$d")
+    mine=$(fresh_dir); bash "$KIT/install.sh" "$mine" >/dev/null 2>&1
+    rsync -a --exclude CLAUDE.project.md --exclude linear.md --exclude tasks "$mine/" "$d/"
+    refuses "$kit and this kit: uninstall" uninstall.sh "$d" --force
+    refuses "$kit and this kit: upgrade"   install.sh   "$d" --upgrade
+
+    # The way out the message gives, followed to the end.
+    mark=$(marker "$kit")
+    mv "$d/$mark" "$work/moved"
+    out=$(bash "$KIT/uninstall.sh" "$d" --force --keep-project 2>&1); code=$?
+    mkdir -p "$(dirname "$d/$mark")"; mv "$work/moved" "$d/$mark"
+    passes "$kit and this kit: the way out removes this kit" "$code" "$out" gone "$d/.claude/hooks/claim-scan.sh"
+    install_other "$kit" "$d" "$(restore_flag "$kit")"; code=$?
+    missing=$(LC_ALL=C comm -13 <(snapshot "$d") <(printf '%s\n' "$before"))
+    if [ "$code" -eq 0 ] && [ -z "$missing" ]; then
+      ok "$kit and this kit: rerunning $kit's installer restores all its files"
+    else
+      bad "$kit and this kit: rerunning $kit's installer restores all its files" "  exit=$code, missing or changed: $missing"
+    fi
+  done
+fi
 
 printf '\n%d passed, %d failed\n' "$pass" "$fail"
 [ "$fail" -eq 0 ]
