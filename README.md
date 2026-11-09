@@ -82,6 +82,27 @@ files the kit installed; `--keep-project` also keeps the overlay.
 
 Requirements: bash, git and python3 (Node 18+ for npx).
 
+### Next to another Claude kit
+
+The Design, Code and Research kits use the same `CLAUDE.md` and the same hook
+names, so two kits can't share a folder. `install.sh` and `uninstall.sh` stop
+and change nothing when they find one of those kits in the target folder.
+
+Install this kit into a subfolder instead, and open Claude Code in that
+subfolder:
+
+```bash
+bash ~/claude-marketing-kit/install.sh "$PWD/marketing"
+cd marketing && claude
+```
+
+Hooks only run from the folder the session opened in. A session opened at the
+repo root doesn't run the subfolder's hooks, so `claim-scan` won't stop a write
+to `marketing/drafts/` from there.
+
+Those kits don't have this check yet. Running their `install.sh` or
+`uninstall.sh` in this kit's folder still replaces or deletes this kit's files.
+
 ## Social media and video (opt-in)
 
 Drafts are the default; the kit never needs an account. To publish, connect
