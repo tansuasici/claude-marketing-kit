@@ -40,6 +40,17 @@ if [ "$SRC" = "$TARGET" ]; then
   exit 2
 fi
 
+# Another Claude kit here uses the same CLAUDE.md and hook names. The map alone
+# isn't enough to refuse: a repo can have its own CODEBASE_MAP.md and no kit.
+for map in DESIGN_MAP.md CODEBASE_MAP.md MANUSCRIPT_MAP.md; do
+  [ -e "$TARGET/$map" ] && [ -e "$TARGET/.claude/hooks/session-start.sh" ] || continue
+  echo "install: this folder already has another Claude kit ($map and .claude/hooks/session-start.sh). Nothing was changed." >&2
+  echo "Both kits use CLAUDE.md and the same hook names, so one kit's rules and checks would replace the other's, with or without --force." >&2
+  echo "Install into a subfolder, and open Claude Code in that subfolder:" >&2
+  echo "  bash \"$SRC/install.sh\" \"$TARGET/marketing\"" >&2
+  exit 2
+done
+
 say() { printf '%s\n' "$1"; }
 do_cp() {  # do_cp SRC_REL [overlay]  (file or dir); overlay files are never replaced; honors --dry-run
   local rel="$1" overlay="${2:-0}"

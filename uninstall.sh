@@ -33,6 +33,16 @@ if [ "$SRC" = "$TARGET" ]; then
   exit 2
 fi
 
+# Files are removed by name, and another Claude kit uses the same names for its
+# CLAUDE.md and hooks. Removing them here would switch that kit's checks off.
+for map in DESIGN_MAP.md CODEBASE_MAP.md MANUSCRIPT_MAP.md; do
+  [ -e "$TARGET/$map" ] && [ -e "$TARGET/.claude/hooks/session-start.sh" ] || continue
+  echo "uninstall: this folder also has another Claude kit ($map and .claude/hooks/session-start.sh). Nothing was removed." >&2
+  echo "Both kits use CLAUDE.md and the same hook names, so this would delete that kit's rules and hooks too." >&2
+  echo "To remove this kit and keep the other: move $map out of the folder, rerun this, move $map back, then rerun the other kit's install.sh to restore its files." >&2
+  exit 2
+done
+
 # Kit-managed files, file by file, from the kit's own tree.
 to_remove=( "CLAUDE.md" )
 while IFS= read -r f; do to_remove+=( "${f#"$SRC"/}" ); done < <(

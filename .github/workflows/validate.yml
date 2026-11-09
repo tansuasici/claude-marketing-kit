@@ -33,3 +33,4 @@ jobs:
       - run: bash tests/hooks/prompt-router.test.sh
       - run: bash tests/hooks/branch-protect.test.sh
       - run: bash tests/hooks/block-dangerous-commands.test.sh
+      - run: bash tests/install-other-kit.test.sh
