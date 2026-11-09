@@ -41,10 +41,14 @@ if [ "$SRC" = "$TARGET" ]; then
 fi
 
 # Another Claude kit here uses the same CLAUDE.md and hook names. The map alone
-# isn't enough to refuse: a repo can have its own CODEBASE_MAP.md and no kit.
-for map in DESIGN_MAP.md CODEBASE_MAP.md MANUSCRIPT_MAP.md; do
-  [ -e "$TARGET/$map" ] && [ -e "$TARGET/.claude/hooks/session-start.sh" ] || continue
-  echo "install: this folder already has another Claude kit ($map and .claude/hooks/session-start.sh). Nothing was changed." >&2
+# isn't enough to refuse: a repo can have its own DESIGN_MAP.md and no kit. So
+# each kit is two files only it ships; session-start.sh won't do, because this
+# kit installs one too. The Code Kit's minimal profile has no CODEBASE_MAP.md,
+# so that kit is two of its hooks.
+for pair in DESIGN_MAP.md:.claude/hooks/motion-gate.sh .claude/hooks/secret-scan.sh:.claude/hooks/commit-gate.sh MANUSCRIPT_MAP.md:.claude/hooks/citation-gate.sh; do
+  mark="${pair%%:*}"; hook="${pair#*:}"
+  [ -e "$TARGET/$mark" ] && [ -e "$TARGET/$hook" ] || continue
+  echo "install: this folder already has another Claude kit ($mark and $hook). Nothing was changed." >&2
   echo "Both kits use CLAUDE.md and the same hook names, so one kit's rules and checks would replace the other's, with or without --force." >&2
   echo "Install into a subfolder, and open Claude Code in that subfolder:" >&2
   echo "  bash \"$SRC/install.sh\" \"$TARGET/marketing\"" >&2

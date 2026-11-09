@@ -35,11 +35,13 @@ fi
 
 # Files are removed by name, and another Claude kit uses the same names for its
 # CLAUDE.md and hooks. Removing them here would switch that kit's checks off.
-for map in DESIGN_MAP.md CODEBASE_MAP.md MANUSCRIPT_MAP.md; do
-  [ -e "$TARGET/$map" ] && [ -e "$TARGET/.claude/hooks/session-start.sh" ] || continue
-  echo "uninstall: this folder also has another Claude kit ($map and .claude/hooks/session-start.sh). Nothing was removed." >&2
+# Each kit is two files only it ships, as in install.sh.
+for pair in DESIGN_MAP.md:.claude/hooks/motion-gate.sh .claude/hooks/secret-scan.sh:.claude/hooks/commit-gate.sh MANUSCRIPT_MAP.md:.claude/hooks/citation-gate.sh; do
+  mark="${pair%%:*}"; hook="${pair#*:}"
+  [ -e "$TARGET/$mark" ] && [ -e "$TARGET/$hook" ] || continue
+  echo "uninstall: this folder also has another Claude kit ($mark and $hook). Nothing was removed." >&2
   echo "Both kits use CLAUDE.md and the same hook names, so this would delete that kit's rules and hooks too." >&2
-  echo "To remove this kit and keep the other: move $map out of the folder, rerun this, move $map back, then rerun the other kit's install.sh to restore its files." >&2
+  echo "To remove this kit and keep the other: move $mark out of the folder, rerun this, move $mark back, then rerun the other kit's install.sh to restore its files." >&2
   exit 2
 done
 
