@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.1](https://github.com/tansuasici/claude-marketing-kit/compare/v0.1.0...v0.1.1) (2026-11-09)
+
+
+### Bug Fixes
+
+* **release:** bump VERSION with each release and keep bytecode out of the package ([#41](https://github.com/tansuasici/claude-marketing-kit/issues/41)) ([566c0c4](https://github.com/tansuasici/claude-marketing-kit/commit/566c0c40de71754c01b641a65165c5c64526913b))
+* **uninstall:** give a way out next to another kit that works ([#39](https://github.com/tansuasici/claude-marketing-kit/issues/39)) ([0770c08](https://github.com/tansuasici/claude-marketing-kit/commit/0770c08b8bd9bb4fb8e804e84ba09b36f1025d90))
+
 ## 0.1.0 (2026-11-09)
 
 

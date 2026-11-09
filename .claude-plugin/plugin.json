@@ -2,7 +2,7 @@
   "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
   "name": "marketing-kit",
   "description": "Marketing discipline kit for Claude Code: Research → Position → Create → Gate → Measure, with a marketing map, claim and slop gates, and approval before anything is published.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
     "name": "tansuasici",
     "url": "https://github.com/tansuasici"
