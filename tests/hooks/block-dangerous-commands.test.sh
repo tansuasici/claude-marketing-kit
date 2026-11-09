@@ -78,6 +78,54 @@ allows 'git clean -n'
 allows 'chmod -R 755 /var/www/app'
 allows 'docker system prune'
 
+# ---- shell writes to copy files ----------------------------------------------
+
+W="shell write to a copy file"
+blocks 'printf "Trusted by 500 teams.\n" >> drafts/landing.md' "$W: drafts/landing.md"
+blocks 'echo x > README.md'                 "$W: README.md"
+blocks 'echo x>landing.md'                  "$W: landing.md"
+blocks 'echo x > "drafts/my draft.md"'      "$W: drafts/my draft.md"
+blocks 'echo x > ./drafts/../landing.mdx'   "$W: landing.mdx"
+blocks 'make &> out.txt'                    "$W: out.txt"
+blocks 'echo x 1> landing.md'               "$W: landing.md"
+blocks 'cd drafts && echo x >| index.html'  "$W: index.html"
+blocks "echo x > $proj/landing.md"          "$W: landing.md"
+# shellcheck disable=SC2016  # literal variable is the point
+blocks 'echo x > "$CLAUDE_PROJECT_DIR/landing.md"' "$W: landing.md"
+blocks $'cat <<EOF > drafts/landing.md\nTrusted by 500 teams.\nEOF' "$W: drafts/landing.md"
+blocks $'cat <<EOF\nbody\nEOF\necho x > landing.md' "$W: landing.md"
+blocks 'echo x | tee -a site/index.html'    "$W: site/index.html"
+blocks 'sudo tee landing.md < in.json'      "$W: landing.md"
+blocks "sed -i '' 's/a/b/' drafts/landing.md" "$W: drafts/landing.md"
+blocks 'sed -i.bak -e s/a/b/ landing.md'    "$W: landing.md"
+blocks 'sed -Ei s/a/b/ landing.md'          "$W: landing.md"
+blocks 'sed --in-place s/a/b/ landing.md'   "$W: landing.md"
+
+allows 'cat landing.md'
+allows 'cat < landing.md'
+allows 'sed s/a/b/ landing.md'
+allows 'sed -n 1p landing.md > /tmp/first.log'
+allows 'tee < landing.md'
+allows 'echo x > /tmp/landing.md'
+allows 'echo x > ../other/landing.md'
+allows 'echo x > out.log'
+allows 'echo x > /dev/null'
+allows 'make > report.json 2>&1'
+allows 'make 2> err.txt'
+allows "echo '> landing.md'"
+allows 'echo "a > b.md"'
+allows 'echo a \> b.md'
+allows 'git commit -m "a > b.md"'
+allows '# echo x > landing.md'
+allows $'cat <<\'EOF\' > /tmp/pr-body.log\n> quoted line.md\necho x > landing.md\nEOF'
+allows 'echo x > research/notes.md'
+allows 'echo x > CLAUDE.md'
+allows 'echo x > MARKETING_MAP.md'
+allows 'echo x > .claude/notes.md'
+allows 'echo x > tests/hooks/fixtures/claim/social.md'
+# shellcheck disable=SC2016  # a path from another variable can't be resolved
+allows 'echo x > "$OUT/landing.md"'
+
 # ---- other input -------------------------------------------------------------
 
 out=$(printf '{"tool_name":"Write","tool_input":{"command":"git reset --hard"}}' | CLAUDE_PROJECT_DIR="$proj" "$HOOK" 2>&1); code=$?
