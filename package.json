@@ -41,7 +41,8 @@
     "install.sh",
     "uninstall.sh",
     "VERSION",
-    "LICENSE"
+    "LICENSE",
+    "!**/__pycache__/**"
   ],
   "engines": {
     "node": ">=18"
