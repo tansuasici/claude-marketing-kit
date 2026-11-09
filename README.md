@@ -15,8 +15,8 @@
   <img src="https://img.shields.io/badge/license-MIT-0f766e" alt="MIT">
 </p>
 
-> **Status:** early skeleton. The ruleset, the map template and the hooks are
-> in place; skills and agents land before 0.1.0.
+> **Status:** pre-release. The ruleset, map template, hooks, skills and agents
+> are in place. Until 0.1.0 is out, install from a clone.
 
 ## The Problem
 
@@ -41,27 +41,30 @@ The cardinal rule: **every claim traces back to a row in
 From your product repo:
 
 ```bash
-npx @tansuasici/claude-marketing-kit init
+git clone https://github.com/tansuasici/claude-marketing-kit ~/claude-marketing-kit
+bash ~/claude-marketing-kit/install.sh "$PWD"
 ```
 
 Then start a Claude Code session and run `/brief`: Claude reads the repo and
 fills `MARKETING_MAP.md` (Product, Audience, Positioning, Voice) with you, one
 section at a time. The map is read first every session.
 
-### Other ways to install
+### After the 0.1.0 release
+
+These two don't work yet: the package isn't on npm and the plugin isn't in the
+marketplace.
+
+**With npx:**
+
+```bash
+npx @tansuasici/claude-marketing-kit init
+```
 
 **As a Claude Code plugin**, inside Claude Code:
 
 ```
 /plugin marketplace add tansuasici/claude-plugins
 /plugin install marketing-kit@tansuasici
-```
-
-**From a clone:**
-
-```bash
-git clone https://github.com/tansuasici/claude-marketing-kit ~/claude-marketing-kit
-bash ~/claude-marketing-kit/install.sh "$PWD"
 ```
 
 ### Installer options
@@ -74,7 +77,7 @@ bash ~/claude-marketing-kit/install.sh "$PWD"
 | `--dry-run` | Print what would happen; change nothing |
 
 Your overlay (`MARKETING_MAP.md`, `CLAUDE.project.md`, `linear.md`) is never
-overwritten. `npx @tansuasici/claude-marketing-kit uninstall` deletes only the
+overwritten. `bash ~/claude-marketing-kit/uninstall.sh "$PWD"` deletes only the
 files the kit installed; `--keep-project` also keeps the overlay.
 
 Requirements: bash, git and python3 (Node 18+ for npx).
@@ -128,7 +131,7 @@ a video with them yet.
 | `session-start.sh` | SessionStart | Reports whether `MARKETING_MAP.md` is filled, shows Product and Positioning, lists `linear.md → Now`. |
 | `prompt-router.sh` | UserPromptSubmit | Adds reminders for claims, channel limits and publishing. |
 | `branch-protect.sh` | PreToolUse (Bash) | Blocks pushes to `main`/`master` and force-pushes. |
-| `block-dangerous-commands.sh` | PreToolUse (Bash) | Blocks destructive shell commands, and writes to copy files with `>`, `>>`, `tee` or `sed -i`, which would skip `claim-scan` and `slop-scan`. Limits: `cp`, `mv`, `python`, a script or a path built from a variable can still write without either hook seeing it. |
+| `block-dangerous-commands.sh` | PreToolUse (Bash) | Blocks destructive shell commands, and writes to copy files with `>`, `>>`, `tee` or `sed -i`, which would skip `claim-scan` and `slop-scan`. Limits: `cp`, `mv`, `python`, `bash -c`, a script or a path built from a variable can still write without either hook seeing it. |
 | `slop-scan.sh` | PostToolUse (Write, Edit) | Warns about hype words, filler phrases, soft-word clusters, em-dash density and emoji bullets in copy files, using `agent_docs/slop-signs.md` and `MARKETING_MAP.md → Banned words`. |
 | `claim-scan.sh` | PreToolUse + PostToolUse (Write, Edit) | Blocks invented social proof in copy files (an attributed quote, `trusted by N teams`, `as seen on`) unless `MARKETING_MAP.md → Evidence` backs it or the line carries `[NEEDS PROOF]` / `[SLOT: …]`. After the write, warns about numbers, prices and superlatives with no Evidence row and counts open `[NEEDS PROOF]` marks. |
 | `channel-limits.sh` | PostToolUse (Write, Edit) | Counts a draft against its channel's limits in `agent_docs/channels.md` (X links as 23 and emoji as 2, hashtag caps, the visible opening, YouTube title rules) and reports the counted lengths. The channel comes from `channel: x` frontmatter or the path (`drafts/x/`, `launch.linkedin.md`). |
@@ -171,4 +174,4 @@ PRs welcome. Open an issue first for a new skill or channel.
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+MIT. See [LICENSE](https://github.com/tansuasici/claude-marketing-kit/blob/main/LICENSE).
