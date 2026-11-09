@@ -41,7 +41,7 @@ for pair in DESIGN_MAP.md:.claude/hooks/motion-gate.sh .claude/hooks/secret-scan
   [ -e "$TARGET/$mark" ] && [ -e "$TARGET/$hook" ] || continue
   echo "uninstall: this folder also has another Claude kit ($mark and $hook). Nothing was removed." >&2
   echo "Both kits use CLAUDE.md and the same hook names, so this would delete that kit's rules and hooks too." >&2
-  echo "To remove this kit and keep the other: move $mark out of the folder, rerun this, move $mark back, then rerun the other kit's install.sh to restore its files." >&2
+  echo "To remove this kit and keep the other: move $mark out of the folder, rerun this with --keep-project (the overlay files are shared), move $mark back, then rerun the other kit's install.sh with --force (the Code kit's with --upgrade) to restore its files. MARKETING_MAP.md stays, so delete it if you no longer want it." >&2
   exit 2
 done
 
