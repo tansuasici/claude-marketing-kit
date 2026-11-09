@@ -15,8 +15,8 @@
   <img src="https://img.shields.io/badge/license-MIT-0f766e" alt="MIT">
 </p>
 
-> **Status:** 0.1.0, the first release. Install with npx or from a clone. The
-> Claude Code plugin isn't in the marketplace yet.
+> **Status:** 0.1.0, the first release. Install with npx, from a clone or as a
+> Claude Code plugin.
 
 ## The Problem
 
@@ -57,13 +57,17 @@ bash ~/claude-marketing-kit/install.sh "$PWD"
 
 ### As a Claude Code plugin
 
-Not available yet: the plugin isn't in the marketplace, so these two commands
-don't work. Inside Claude Code, they will be:
+Inside Claude Code:
 
 ```
 /plugin marketplace add tansuasici/claude-plugins
 /plugin install marketing-kit@tansuasici
 ```
+
+The plugin brings the skills, agents and hooks. The kit's `CLAUDE.md` rules
+don't load and nothing is added to your repo; at session start a hook tells
+Claude where the `MARKETING_MAP.md` template is. To get the rules and the map in
+your repo, use npx or the clone.
 
 ### Installer options
 
