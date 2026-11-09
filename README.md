@@ -15,8 +15,8 @@
   <img src="https://img.shields.io/badge/license-MIT-0f766e" alt="MIT">
 </p>
 
-> **Status:** 0.1.0, the first release. Install with npx, from a clone or as a
-> Claude Code plugin.
+> **Status:** 0.1, the first release line. Install with npx, from a clone or as
+> a Claude Code plugin.
 
 ## The Problem
 
