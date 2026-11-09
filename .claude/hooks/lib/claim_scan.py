@@ -44,6 +44,10 @@ SOCIAL = re.compile(
     r"\b(?:(?:trusted|used|loved|chosen|relied on|adopted) by"
     r"(?: over| more than| thousands of| hundreds of| millions of)?"
     r"(?: \d[\d,.]*[kKmM]?\+?)?"
+    # Up to two qualifiers ("500 engineering teams"), but not a word that starts
+    # a plain description ("used by your customers", "used by CI to notify users").
+    r"(?: (?!(?:your|our|my|their|its|the|this|that|these|those|a|an|and|or|other|"
+    r"to|for|in|with|of|on|at|from)\b)[\w-]+){0,2}"
     r" (?:teams|companies|developers|devs|engineers|customers|users|startups|businesses|brands|"
     r"organi[sz]ations|people|founders|makers)\b(?: at\b)?"
     r"|as (?:seen|featured) (?:in|on)\b)",
@@ -137,7 +141,7 @@ def social_proof(lines, ev):
             continue
         m = SOCIAL.search(line)
         if m:
-            if m.group(0).lower() not in ev:
+            if m.group(0).lower().replace(",", "") not in ev:  # rows are stored without commas
                 problems.append(f"  \"{line.strip()[:100]}\": \"{m.group(0)}\" with no Evidence row")
             continue
         # A quote (or blockquote) with an attribution after it, same line or next.

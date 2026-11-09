@@ -20,7 +20,7 @@ source "$HOOK_LIB/emit.sh"
 ROOT="${CLAUDE_PROJECT_DIR:-$PWD}"
 STATE_DIR="$ROOT/.hook-state"
 mkdir -p "$STATE_DIR" 2>/dev/null || true
-[ -f "$STATE_DIR/.gitignore" ] || printf '*\n!.gitignore\n' >"$STATE_DIR/.gitignore" 2>/dev/null || true
+[ -f "$STATE_DIR/.gitignore" ] || printf '*\n' >"$STATE_DIR/.gitignore" 2>/dev/null || true
 reset_state "$STATE_DIR/hook-firings.json"
 
 CONTEXT=""

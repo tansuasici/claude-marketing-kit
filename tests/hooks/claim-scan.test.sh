@@ -97,6 +97,8 @@ out=$(pre MultiEdit "$FIX/x.md" "$FIX/blockquote.md")
 expect_has "blockquote with @handle in a MultiEdit blocks" "$out" "exit=2" "\"@devjane\""
 out=$(pre Write "$FIX/x.md" "$FIX/social.md")
 expect_has "\"trusted by N teams\" blocks" "$out" "exit=2" "Trusted by 500+ teams at"
+out=$(pre Edit "$FIX/x.md" "$FIX/social-qualifier.md")
+expect_has "a qualifier before the noun still blocks" "$out" "exit=2" "Trusted by 500 engineering teams"
 out=$(pre Write "$FIX/x.md" "$FIX/seen.md")
 expect_has "\"as seen on\" blocks" "$out" "exit=2" "As seen on"
 
@@ -117,6 +119,7 @@ cat > "$proj/MARKETING_MAP.md" <<'EOF'
 | Jane Doe quote, OK to publish | issue #41 | 2026-11-01 |
 | Trusted by 500+ teams at | customer list, sales sheet | 2026-11-01 |
 | 1200 GitHub stars | issue #30 | 2026-11-07 |
+| Trusted by 1,000 teams | customer list | 2026-11-01 |
 ## Learnings
 EOF
 printf 'Over 1,200 developers starred it and 50%% stayed.\nTrial lasts 30 days, refunds within 11 days.\n' > "$proj/landing.md"
@@ -130,6 +133,9 @@ expect_has "relative paths resolve against the project" "$out" "50%"
 
 expect_pass "a quote whose person has an Evidence row passes" "$(pre Write "$proj/l.md" "$FIX/testimonial.md" "$proj")"
 expect_pass "a social-proof phrase with an Evidence row passes" "$(pre Write "$proj/l.md" "$FIX/social.md" "$proj")"
+expect_pass "a phrase with a comma matches its Evidence row" "$(pre Write "$proj/l.md" "$FIX/social-comma.md" "$proj")"
+out=$(pre Write "$proj/l.md" "$FIX/social-qualifier.md" "$proj")
+expect_has "a different phrase is not backed by that row" "$out" "exit=2"
 out=$(pre Write "$proj/l.md" "$FIX/testimonial-inline.md" "$proj")
 expect_has "other names still block with a map present" "$out" "exit=2" "\"Sam Lee\""
 
