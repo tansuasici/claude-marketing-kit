@@ -11,12 +11,12 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/status-pre--release-0f766e" alt="pre-release">
+  <a href="https://www.npmjs.com/package/@tansuasici/claude-marketing-kit"><img src="https://img.shields.io/npm/v/@tansuasici/claude-marketing-kit?color=0f766e" alt="npm version"></a>
   <img src="https://img.shields.io/badge/license-MIT-0f766e" alt="MIT">
 </p>
 
-> **Status:** pre-release. The ruleset, map template, hooks, skills and agents
-> are in place. Until 0.1.0 is out, install from a clone.
+> **Status:** 0.1.0, the first release. Install with npx or from a clone. The
+> Claude Code plugin isn't in the marketplace yet.
 
 ## The Problem
 
@@ -41,26 +41,24 @@ The cardinal rule: **every claim traces back to a row in
 From your product repo:
 
 ```bash
-git clone https://github.com/tansuasici/claude-marketing-kit ~/claude-marketing-kit
-bash ~/claude-marketing-kit/install.sh "$PWD"
+npx @tansuasici/claude-marketing-kit init
 ```
 
 Then start a Claude Code session and run `/brief`: Claude reads the repo and
 fills `MARKETING_MAP.md` (Product, Audience, Positioning, Voice) with you, one
 section at a time. The map is read first every session.
 
-### After the 0.1.0 release
-
-These two don't work yet: the package isn't on npm and the plugin isn't in the
-marketplace.
-
-**With npx:**
+### From a clone
 
 ```bash
-npx @tansuasici/claude-marketing-kit init
+git clone https://github.com/tansuasici/claude-marketing-kit ~/claude-marketing-kit
+bash ~/claude-marketing-kit/install.sh "$PWD"
 ```
 
-**As a Claude Code plugin**, inside Claude Code:
+### As a Claude Code plugin
+
+Not available yet: the plugin isn't in the marketplace, so these two commands
+don't work. Inside Claude Code, they will be:
 
 ```
 /plugin marketplace add tansuasici/claude-plugins
@@ -76,9 +74,14 @@ npx @tansuasici/claude-marketing-kit init
 | `--gitignore` | Keep the kit out of your repo |
 | `--dry-run` | Print what would happen; change nothing |
 
+These work with `npx @tansuasici/claude-marketing-kit init` and with
+`install.sh`.
+
 Your overlay (`MARKETING_MAP.md`, `CLAUDE.project.md`, `linear.md`) is never
-overwritten. `bash ~/claude-marketing-kit/uninstall.sh "$PWD"` deletes only the
-files the kit installed; `--keep-project` also keeps the overlay.
+overwritten. `npx @tansuasici/claude-marketing-kit uninstall` (or
+`bash ~/claude-marketing-kit/uninstall.sh "$PWD"` from a clone) asks first, then
+deletes only the files the kit installed; `--keep-project` also keeps the
+overlay.
 
 Requirements: bash, git and python3 (Node 18+ for npx).
 
