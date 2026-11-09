@@ -128,7 +128,7 @@ a video with them yet.
 | `session-start.sh` | SessionStart | Reports whether `MARKETING_MAP.md` is filled, shows Product and Positioning, lists `linear.md → Now`. |
 | `prompt-router.sh` | UserPromptSubmit | Adds reminders for claims, channel limits and publishing. |
 | `branch-protect.sh` | PreToolUse (Bash) | Blocks pushes to `main`/`master` and force-pushes. |
-| `block-dangerous-commands.sh` | PreToolUse (Bash) | Blocks destructive shell commands. |
+| `block-dangerous-commands.sh` | PreToolUse (Bash) | Blocks destructive shell commands, and writes to copy files with `>`, `>>`, `tee` or `sed -i`, which would skip `claim-scan` and `slop-scan`. Limits: `cp`, `mv`, `python`, a script or a path built from a variable can still write without either hook seeing it. |
 | `slop-scan.sh` | PostToolUse (Write, Edit) | Warns about hype words, filler phrases, soft-word clusters, em-dash density and emoji bullets in copy files, using `agent_docs/slop-signs.md` and `MARKETING_MAP.md → Banned words`. |
 | `claim-scan.sh` | PreToolUse + PostToolUse (Write, Edit) | Blocks invented social proof in copy files (an attributed quote, `trusted by N teams`, `as seen on`) unless `MARKETING_MAP.md → Evidence` backs it or the line carries `[NEEDS PROOF]` / `[SLOT: …]`. After the write, warns about numbers, prices and superlatives with no Evidence row and counts open `[NEEDS PROOF]` marks. |
 | `channel-limits.sh` | PostToolUse (Write, Edit) | Counts a draft against its channel's limits in `agent_docs/channels.md` (X links as 23 and emoji as 2, hashtag caps, the visible opening, YouTube title rules) and reports the counted lengths. The channel comes from `channel: x` frontmatter or the path (`drafts/x/`, `launch.linkedin.md`). |

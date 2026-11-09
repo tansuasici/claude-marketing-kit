@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 #
 # block-dangerous-commands.sh — PreToolUse hook
-# Blocks destructive shell commands that are hard to reverse
+# Blocks destructive shell commands that are hard to reverse, and shell writes
+# to copy files, which would skip claim-scan and slop-scan
 #
 # Reads tool input from stdin (JSON with tool_name and tool_input)
 #
@@ -131,6 +132,24 @@ if [ "$BLOCKED" = true ]; then
   echo "This command is potentially destructive and hard to reverse."
   echo "Get explicit approval from the user before running it."
   exit 2
+fi
+
+# The copy hooks only run on Write and Edit, so >, >>, tee and sed -i would get
+# a line into a draft unchecked. Test fixtures are input, not copy.
+if [ -f "$HOOK_LIB/shell_writes.py" ] && [ -f "$HOOK_LIB/copy-file.sh" ] && command -v python3 >/dev/null 2>&1; then
+  # shellcheck source=lib/copy-file.sh
+  source "$HOOK_LIB/copy-file.sh"
+  while IFS= read -r target; do
+    case "$target" in */fixtures/*) continue ;; esac
+    if is_copy_file "$target" "$ROOT"; then
+      bump_counter "$ROOT/.hook-state/hook-firings.json" "block-dangerous-commands"
+      echo "BLOCKED: shell write to a copy file: ${target#"$ROOT"/}"
+      echo ""
+      echo "claim-scan and slop-scan only run on the Write and Edit tools, so this text would skip them."
+      echo "Use Write or Edit for this file. For command output, write outside the project or under research/."
+      exit 2
+    fi
+  done < <(python3 "$HOOK_LIB/shell_writes.py" "$COMMAND" "$ROOT" 2>/dev/null)
 fi
 
 exit 0
