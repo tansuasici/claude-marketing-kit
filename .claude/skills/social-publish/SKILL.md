@@ -39,7 +39,7 @@ media:
 
 - **Hosting is the user's.** They pick the host and upload the file. Never upload it, pick a host or use a token for one: what's uploaded is public to anyone with the link. No link means stop and say what's needed.
 - **The link replaces the slot.** Once the file is hosted, the `[SLOT: …]` for it comes out of the body and the link goes in `media:`. Show that change and get a yes before writing it. A slot for something that isn't hosted yet stays and stops the run.
-- **A review cut stays home.** If `script:` is set, the script's own marks count too. A video from a script with `[NEEDS PROOF]` or a `[SLOT: …]` for something to record or make is a review cut (`video-produce`) and doesn't go out, whatever the link points to. Music and footage slots are the exception: they stay in the script after the user picks in `video-produce`, so ask what went in the video and show its licence in the block.
+- **A review cut stays home.** If `script:` is set, the script's own marks count too. A video from a script with `[NEEDS PROOF]` or a `[SLOT: …]` for something to record or make is a review cut and doesn't go out, whatever the link points to. Music and footage slots are the exception: they stay in the script after the user picks them while making the video, so ask what went in the video and show its licence in the block.
 
 ## Saving to the scheduler's drafts
 

@@ -71,4 +71,4 @@ Scene 1 is the opening. In a table cell, write "or" between alternatives, never 
    - the counted words, and the seconds marked as estimated, per scene and in total, against the target;
    - every `[NEEDS PROOF]` and `[SLOT: …]` still in the script, as the list of what to record or prove;
    - every competitor comparison, number, guarantee, price, music or footage choice, which need the user's approval (`CLAUDE.md → Approval Required`);
-   - that nothing has been filmed or published, that `video-produce` makes the video once the slots are filled, that the caption comes from `social-post` with this script as the artefact, and that publishing needs that caption, the finished video at a public link the user hosts, and `social-publish` (`social-publish → Media`).
+   - that nothing has been filmed or published, that the video is made in the user's own editing tool once the slots are filled, that the caption comes from `social-post` with this script as the artefact, and that publishing needs that caption, the finished video at a public link the user hosts, and `social-publish` (`social-publish → Media`).

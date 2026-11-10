@@ -11,7 +11,6 @@
 ## Conventions (override kit defaults here)
 - <e.g. Release posts are drafted from `CHANGELOG.md`, one post per minor version.>
 - <e.g. Spelling: US English. Product name is always lowercase.>
-- <e.g. Video: Remotion project in `video/`; render with `npx remotion render`.>
 
 ## Protected (beyond the kit defaults)
 - <e.g. Pricing and plan names come only from `pricing.json`; never restate them by hand.>
