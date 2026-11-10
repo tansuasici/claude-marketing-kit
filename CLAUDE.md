@@ -113,7 +113,6 @@ Open work lives in **`linear.md`** (Now / Next / Later). It is the single task f
 - Claims, proof and `[NEEDS PROOF]` → `agent_docs/claims-and-evidence.md`
 - Hype words, filler and the competitor test → `agent_docs/slop-signs.md`
 - Platform limits and formats → `agent_docs/channels.md`
-- Video editing tools, setup and rules → `agent_docs/video-tools.md`
 - Openings, body, CTA and revision order → `agent_docs/copywriting.md`
 - Filling Product, Audience and Positioning → `agent_docs/positioning.md`
 

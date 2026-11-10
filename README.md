@@ -128,30 +128,9 @@ tried with a real Buffer account yet.
 
 Planned channels: X, LinkedIn, Instagram, Facebook, YouTube, TikTok.
 `/video-script` writes the script, scene list and subtitles for any editing
-tool. `/video-produce` turns that script into a local video file with Remotion
-(code-based video) or Instagram Edits for Mac, and never publishes it. It hasn't
-been run end to end yet.
-
-To connect Edits (Apple silicon Mac, Instagram account): in the app, open
-Settings → Automation, turn on the server, and run the Claude Code command it
-shows in your own terminal. The command holds a token, so keep it out of chat
-and out of your repo. Claude works only in a new project, and an export is a
-local file, never a post. The tool map and rules are in
-`agent_docs/video-tools.md`; only read-only calls have been tried so far.
-
-To use Remotion, check its licence first: free for individuals, for teams of up
-to 3 and, with limits, for non-profits; a company of 4 or more needs a paid
-licence. Remotion's own skills install into your Remotion project, not through
-this kit:
-
-```bash
-npx create-video --yes --blank my-video
-cd my-video
-npx remotion skills add
-```
-
-The steps and rules are in `agent_docs/video-tools.md`. This kit hasn't rendered
-a video with them yet.
+tool. This kit doesn't edit or render the video; that is moving to a separate
+Video Kit. The finished video goes out through `/social-publish` like any other
+post, at a link you host.
 
 ## Hooks
 
@@ -184,7 +163,6 @@ linear.md                 open work: Now / Next / Later (created on install)
                           /social-post (one post, one channel, counted)
                           /repurpose (rewrites one idea for another channel)
                           /video-script (one video: scenes, spoken lines, subtitles; no tool settings)
-                          /video-produce (one script, one tool, one local file; checked against the script)
                           /email-sequence (one trigger, one goal, 5 emails at most)
                           /launch-plan (readiness, pieces, go/no-go, what to measure)
                           /voice-of-customer (users' words, verbatim, with source and permission)
