@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.2.0](https://github.com/tansuasici/claude-marketing-kit/compare/v0.1.1...v0.2.0) (2026-11-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* **video:** /video-produce and agent_docs/video-tools.md are gone. Upgrading doesn't delete an installed copy; remove .claude/skills/video-produce/ and agent_docs/video-tools.md by hand.
+
+### Features
+
+* **video:** move video editing and rendering out to the Video Kit ([#42](https://github.com/tansuasici/claude-marketing-kit/issues/42)) ([e0cb8f0](https://github.com/tansuasici/claude-marketing-kit/commit/e0cb8f0e19bbcfc8054a0d02cfb12e90dc526d9e))
+
+
+### Bug Fixes
+
+* **hooks:** read only the push's own arguments in branch-protect ([#44](https://github.com/tansuasici/claude-marketing-kit/issues/44)) ([e78f0ab](https://github.com/tansuasici/claude-marketing-kit/commit/e78f0abf2c9dee994cb668c7a67b4d55117c209a))
+
 ## [0.1.1](https://github.com/tansuasici/claude-marketing-kit/compare/v0.1.0...v0.1.1) (2026-11-09)
 
 
