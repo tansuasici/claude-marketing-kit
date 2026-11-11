@@ -42,11 +42,17 @@ COMMAND=$(parse_json_field "command")
 # Matching the prefix means `git -c color.ui=always push origin main` can't slip by.
 GIT_PUSH='git\s+(-c\s+\S+\s+)*push'
 
+# Only the push's own arguments count: cut each `git push` at the first `&&`,
+# `||`, `;` or `|`. Otherwise `git push -u origin feat/x && gh pr create --base
+# main` reads the later `main` as the push target. One segment per line.
+PUSHES=$(printf '%s\n' "$COMMAND" | grep -oE "${GIT_PUSH}[^;&|]*" || true)
+[ -z "$PUSHES" ] && exit 0
+
 # Check for force push (check first — always block regardless of branch)
 # Allow --force-with-lease (safer alternative) but block --force and -f
-if echo "$COMMAND" | grep -qE "${GIT_PUSH}\s+.*--force-with-lease"; then
+if echo "$PUSHES" | grep -qE "${GIT_PUSH}\s+.*--force-with-lease"; then
   : # Allow --force-with-lease (only overwrites if remote matches expectations)
-elif echo "$COMMAND" | grep -qE "${GIT_PUSH}\s+.*--force|${GIT_PUSH}\s+.*-f\b"; then
+elif echo "$PUSHES" | grep -qE "${GIT_PUSH}\s+.*--force|${GIT_PUSH}\s+.*-f\b"; then
   bump_branch_block
   echo "BLOCKED: Force push detected"
   echo ""
@@ -63,8 +69,8 @@ fi
 #   2. a refspec whose DESTINATION is protected:  HEAD:main | local:master |
 #      main:main   (pushing TO main). `git push origin main:feature` is allowed —
 #      that pushes local main to a feature branch, not to remote main.
-if echo "$COMMAND" | grep -qE "${GIT_PUSH}\s+(\S+\s+)*(main|master)([[:space:]]|[;&|]|$)" \
-  || echo "$COMMAND" | grep -qE "${GIT_PUSH}\s+.*:(main|master)([[:space:]]|[;&|]|$)"; then
+if echo "$PUSHES" | grep -qE "${GIT_PUSH}\s+(\S+\s+)*(main|master)([[:space:]]|[;&|]|$)" \
+  || echo "$PUSHES" | grep -qE "${GIT_PUSH}\s+.*:(main|master)([[:space:]]|[;&|]|$)"; then
   bump_branch_block
   echo "BLOCKED: Direct push to main/master branch"
   echo ""
@@ -75,7 +81,7 @@ if echo "$COMMAND" | grep -qE "${GIT_PUSH}\s+(\S+\s+)*(main|master)([[:space:]]|
 fi
 
 # Check for `git push <remote> HEAD` when on main/master
-if echo "$COMMAND" | grep -qE "${GIT_PUSH}\s+\S+\s+HEAD\b"; then
+if echo "$PUSHES" | grep -qE "${GIT_PUSH}\s+\S+\s+HEAD\b"; then
   CURRENT_BRANCH=$(git branch --show-current 2>/dev/null) || CURRENT_BRANCH=""
   if [ "$CURRENT_BRANCH" = "main" ] || [ "$CURRENT_BRANCH" = "master" ]; then
     bump_branch_block
