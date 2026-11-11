@@ -52,6 +52,17 @@ blocks "chained after another command"    "$(run 'git add -A && git push origin 
 allows "refspec main:feature pushes to a feature branch" "$(run 'git push origin main:feature')"
 allows "feature branch push"              "$(run 'git push -u origin feat/x')"
 allows "a branch named main-docs"         "$(run 'git push origin main-docs')"
+blocks "cd then push origin main"          "$(run 'cd x && git push origin main')"          "Direct push to main/master"
+blocks "push main, then another command"  "$(run 'git push origin main && echo done')"     "Direct push to main/master"
+blocks "force push before a pipe"         "$(run 'git push --force origin feat/x | cat')"  "Force push"
+
+# ---- main later in the command, not in the push ------------------------------
+
+allows "push a branch, then gh pr create --base main" "$(run 'git push -u origin feat/x && gh pr create --base main --title x')"
+allows "push a branch; checkout main"     "$(run 'git push origin feat/x; git checkout main')"
+allows "push a branch || echo main"       "$(run 'git push origin feat/x || echo main')"
+allows "push a branch, then --force elsewhere" "$(run 'git push origin feat/x && rm --force tmp')"
+allows "push a branch, then refspec-like text" "$(run 'git push origin feat/x | grep HEAD:main')"
 
 # ---- force push --------------------------------------------------------------
 
