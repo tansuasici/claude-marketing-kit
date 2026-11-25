@@ -178,6 +178,8 @@ linear.md                 open work: Now / Next / Later (created on install)
 ## Contributing
 
 PRs welcome. Open an issue first for a new skill or channel.
+Run `bash scripts/validate.sh` before you push; it runs the same checks as CI.
+Releases follow [RELEASING.md](RELEASING.md).
 
 ## License
 
